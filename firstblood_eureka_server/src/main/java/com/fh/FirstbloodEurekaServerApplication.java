@@ -10,5 +10,5 @@ public class FirstbloodEurekaServerApplication {
     public static void main(String[] args) {
         SpringApplication.run(FirstbloodEurekaServerApplication.class, args);
     }
-    //aaaaadsf
+    //aaaaadsfsdf
 }
