@@ -10,5 +10,4 @@ public class FirstbloodBorrowmoneyApplication {
         SpringApplication.run(FirstbloodBorrowmoneyApplication.class, args);
         //wyywwww
     }
-
 }
