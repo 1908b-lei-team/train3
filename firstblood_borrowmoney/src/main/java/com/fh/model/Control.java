@@ -4,13 +4,14 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
 @TableName("t_control")
 public class Control {
-
     @TableId(type = IdType.INPUT)
     private Integer id;
     @TableField("number")
@@ -48,6 +49,8 @@ public class Control {
     @TableField("one_limit")
     private String oneLimit;//单人限额百分比
     @TableField("start_time")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date startTime;//发售时间
     @TableField("sign_give_status")
     private String signGiveStatus;//借钱状态  借款中，待放款，还款中，已完成，流标
