@@ -1,18 +1,24 @@
 package com.fh.controller;
 
 import com.fh.model.Account;
+import com.fh.model.Attestation;
 import com.fh.service.AccountService;
+import com.fh.service.AttestationService;
 import com.fh.util.ServerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("account")
 @RestController
+@CrossOrigin
 public class AccountController {
 
     @Autowired
     private AccountService accountService;
+
+
 
     //验证 名称
     @RequestMapping("checkUserName")
@@ -41,4 +47,6 @@ public class AccountController {
     public ServerResponse addAccount(Account account){
         return accountService.addAccount(account);
     }
+
+
 }

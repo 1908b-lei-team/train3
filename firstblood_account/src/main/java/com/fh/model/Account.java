@@ -29,7 +29,17 @@ public class Account {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @TableField("new_time")
     private Date newTime;
+    @TableField("virtual_bank_id")
+    private String virtualBankId;
 
+
+    public String getVirtualBankId() {
+        return virtualBankId;
+    }
+
+    public void setVirtualBankId(String virtualBankId) {
+        this.virtualBankId = virtualBankId;
+    }
 
     public Date getNewTime() {
         return newTime;
