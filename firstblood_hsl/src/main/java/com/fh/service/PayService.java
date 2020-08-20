@@ -9,4 +9,5 @@ public interface PayService {
     //查询
     ServerResponse queryList();
 
+    ServerResponse querygeneralassets(Integer id);
 }

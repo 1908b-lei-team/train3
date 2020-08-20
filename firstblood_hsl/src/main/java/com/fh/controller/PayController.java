@@ -14,13 +14,17 @@ public class PayController {
     private PayService payService;
 
 
+
+
     @RequestMapping("queryList")
     public  ServerResponse  queryList(){
         return payService.queryList();
     }
 
 
-
-
+    @RequestMapping("querygeneralassets")
+    public  ServerResponse  querygeneralassets(Integer id){
+        return payService.querygeneralassets(id);
+    }
 
 }

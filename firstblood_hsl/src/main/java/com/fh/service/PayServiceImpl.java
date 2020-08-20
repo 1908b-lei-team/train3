@@ -24,6 +24,11 @@ public class PayServiceImpl implements PayService {
         return ServerResponse.success(list);
     }
 
+    @Override
+    public ServerResponse querygeneralassets(Integer id) {
+        Pay pay = payMapper.selectById(id);
+        return ServerResponse.success(pay.getGeneralassets());
+    }
 
 
 }
