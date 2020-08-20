@@ -51,7 +51,27 @@ public class OpenAnAccount {
     private Date latelyLoginTime; //最近登录时间
     @TableField("login_count")
     private Integer loginCount; //最近登录时间
+    @TableField("account_opening_status")
+    private  Integer accountOpeningStatus;//开户状态
+    @TableField("lockout_state")
+    private  Integer lockoutStatus;//锁定状态
 
+
+    public Integer getAccountOpeningStatus() {
+        return accountOpeningStatus;
+    }
+
+    public void setAccountOpeningStatus(Integer accountOpeningStatus) {
+        this.accountOpeningStatus = accountOpeningStatus;
+    }
+
+    public Integer getLockoutStatus() {
+        return lockoutStatus;
+    }
+
+    public void setLockoutStatus(Integer lockoutStatus) {
+        this.lockoutStatus = lockoutStatus;
+    }
 
     public Integer getId() {
         return id;

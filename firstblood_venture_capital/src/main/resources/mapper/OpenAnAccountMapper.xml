@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fh.mapper.openAnAccount.OpenAnAccountMapper">
+
+    <resultMap id="openAnAccountMap" type="com.fh.vo.OpenAnAccountVo">
+        <result property="id" column="id"></result>
+        <result property="userId" column="user_id"></result>
+        <result property="userName" column="user_name"></result>
+        <result property="idNumber" column="id_number"></result>
+        <result property="creditCardNumbers" column="credit_card_numbers"></result>
+        <result property="accountType" column="account_type"></result>
+        <result property="bankPhone" column="bank_phone"></result>
+        <result property="confirmPassword" column="confirm_password"></result>
+        <result property="bank" column="bank"></result>
+        <result property="virtualBankId" column="virtual_bank_id"></result>
+        <result property="newTime" column="new_time"></result>
+        <result property="userBalance" column="user_balance"></result>
+        <result property="generalAssets" column="general_assets"></result>
+        <result property="userFrozenCapital" column="user_frozen_capital"></result>
+        <result property="theCollectingAmount" column="the_collecting_amount"></result>
+        <result property="generationAlsoAmount" column="generation_also_amount"></result>
+        <result property="totalRevenue" column="total_revenue"></result>
+        <result property="latelyLoginTime" column="lately_login_time"></result>
+        <result property="loginCount" column="login_count"></result>
+        <result property="accountOpeningStatus" column="account_opening_status"></result>
+        <result property="lockoutStatus" column="lockout_state"></result>
+
+        <result property="number" column="number"></result>
+
+    </resultMap>
+
+    <select id="selCount" resultType="java.lang.Integer">
+
+        select  count(*) from t_open_an_account a left join t_control c on a.user_id = c.user_id
+
+    </select>
+    <select id="queryListPage" resultMap="openAnAccountMap">
+
+        select  a.*,c.number from t_open_an_account a left join t_control c on a.user_id = c.user_id
+
+            limit  #{startNum}, #{pagesize}
+    </select>
+</mapper>
