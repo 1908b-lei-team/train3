@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("attestation")
-@CrossOrigin
+//@CrossOrigin
 public class AttestationController {
 
     @Autowired
@@ -23,8 +23,14 @@ public class AttestationController {
     }
 
     //验证 身份证
-    @RequestMapping("checkIdNumber")
+    @RequestMapping("checkIdNumber2")
     public ServerResponse checkIdNumber(String idNumber){
         return attestationService.checkIdNumber(idNumber);
     }
+
+    @RequestMapping("queryInfo")
+    public ServerResponse queryInfo(){
+        return attestationService.queryInfo();
+    }
+
 }

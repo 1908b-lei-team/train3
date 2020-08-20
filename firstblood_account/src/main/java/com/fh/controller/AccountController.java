@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("account")
 @RestController
-@CrossOrigin
+//@CrossOrigin
 public class AccountController {
 
     @Autowired

@@ -49,5 +49,13 @@ public class AttestationServiceImpl implements AttestationService {
         return ServerResponse.success();
     }
 
+    @Override
+    public ServerResponse queryInfo() {
+        QueryWrapper<Attestation> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("user_id",5);
+        Attestation attestation = attestationMapper.selectOne(queryWrapper);
+        return ServerResponse.success(attestation);
+    }
+
 
 }

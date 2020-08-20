@@ -12,10 +12,16 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-boot.version>2.3.0.RELEASE</spring-boot.version>
+        <spring-boot.version>2.3.1.RELEASE</spring-boot.version>
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.fh</groupId>
+            <artifactId>firstblood_zuul</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -34,23 +40,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!--阿里云短信通知-->
-        <dependency>
-            <groupId>com.aliyun</groupId>
-            <artifactId>aliyun-java-sdk-core</artifactId>
-            <version>3.3.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.aliyun</groupId>
-            <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
-            <version>1.1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.aliyun.oss</groupId>
-            <artifactId>aliyun-sdk-oss</artifactId>
-            <version>3.5.0</version>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -87,22 +76,12 @@
             <artifactId>mybatis-plus-extension</artifactId>
             <version>3.2.0</version><!-- 这个版本号一定要和mybatisplus的主版本号一致 -->
         </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.16.20</version>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>2.7.1</version><!--版本号可根据实际情况填写-->
-        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -124,18 +103,6 @@
             <groupId>net.sf.json-lib</groupId>
             <artifactId>json-lib-ext-spring</artifactId>
             <version>1.0.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.66</version>
-        </dependency>
-
-        <!--redis  的 Jar包依赖-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
         <dependency>
@@ -213,7 +180,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.3.0.RELEASE</version>
+                <version>2.3.1.RELEASE</version>
                 <configuration>
                     <mainClass>com.fh.FirstbloodBorrowmoneyApplication</mainClass>
                 </configuration>
