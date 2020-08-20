@@ -1,40 +1,39 @@
 package com.p2p.model;
 
+
+import java.util.Date;
+
 public class User {
 
     private int id;
 
-    private String userphone;
+    private String userphone;//手机号
 
-    private String userpwd;//
+    private String userpwd;//密码
 
-    private String usersex;//
+    private String usersex;//性别
 
-    private String userage;//
+    private String userage;//年龄
 
-    private String usereducation;//
+    private String usereducation;//学历
 
-    private String usermarriage;//
+    private String usermarriage;//婚姻
 
-    private String foundtime;//`` datetime DEFAULT NULL COMMENT '注册时间',
+    private Date foundtime;//`` datetime DEFAULT NULL COMMENT '注册时间',
 
-    private String logintime;//   login_time` datetime DEFAULT NULL COMMENT '最后登录时间',
+    private Date logintime;//   login_time` datetime DEFAULT NULL COMMENT '最后登录时间',
 
     private String userworktime;//`` varchar(255) DEFAULT NULL COMMENT '工作时间',
 
     private String userhouse;//` varchar(255) DEFAULT NULL COMMENT '房产',
 
-    private String userincome;//` varchar(255) DEFAULT NULL COMMENT '房产',
+    private String userincome;//` varchar(255) DEFAULT NULL COMMENT  '年收入',
 
-    private String userproperty;//` varchar(255) DEFAULT NULL COMMENT '房产',
+    private String userproperty;//` varchar(255) DEFAULT NULL COMMENT  '总资产',
 
-    private String uservehicle;//` varchar(255) DEFAULT NULL COMMENT '房产',
+    private String uservehicle;//` varchar(255) DEFAULT NULL COMMENT  '车产',
 
-    private String idnumber;//` varchar(255) DEFAULT NULL COMMENT '身份证号码',
-
-    private String userstatus;//` varchar(255) DEFAULT NULL COMMENT '是否绑定',
-
-    private String logincount;//` int(11) DEFAULT NULL COMMENT '登录次数',
+    private int logincount;//` int(11) DEFAULT NULL COMMENT '登录次数',
 
     private String loginstatus;//` varchar(255) DEFAULT NULL COMMENT '是否锁定',
 
@@ -94,19 +93,19 @@ public class User {
         this.usermarriage = usermarriage;
     }
 
-    public String getFoundtime() {
+    public Date getFoundtime() {
         return foundtime;
     }
 
-    public void setFoundtime(String foundtime) {
+    public void setFoundtime(Date foundtime) {
         this.foundtime = foundtime;
     }
 
-    public String getLogintime() {
+    public Date getLogintime() {
         return logintime;
     }
 
-    public void setLogintime(String logintime) {
+    public void setLogintime(Date logintime) {
         this.logintime = logintime;
     }
 
@@ -150,27 +149,11 @@ public class User {
         this.uservehicle = uservehicle;
     }
 
-    public String getIdnumber() {
-        return idnumber;
-    }
-
-    public void setIdnumber(String idnumber) {
-        this.idnumber = idnumber;
-    }
-
-    public String getUserstatus() {
-        return userstatus;
-    }
-
-    public void setUserstatus(String userstatus) {
-        this.userstatus = userstatus;
-    }
-
-    public String getLogincount() {
+    public int getLogincount() {
         return logincount;
     }
 
-    public void setLogincount(String logincount) {
+    public void setLogincount(int logincount) {
         this.logincount = logincount;
     }
 
