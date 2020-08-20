@@ -5,4 +5,41 @@
 
 <mapper namespace="com.p2p.mapper.UserLoginMapper">
 
+    <resultMap id="userMap" type="com.p2p.model.User">
+        <id column="id" property="id"/>
+        <result column="user_phone" property="userphone"/>
+        <result column="user_pwd" property="userpwd"/>
+        <result column="user_sex" property="usersex"/>
+        <result column="user_age" property="userage"/>
+        <result column="user_education" property="usereducation"/>
+        <result column="user_marriage" property="usermarriage"/>
+        <result column="found_time" property="foundtime"/>
+        <result column="login_time" property="logintime"/>
+        <result column="user_work_time" property="userworktime"/>
+        <result column="user_income" property="userincome"/>
+        <result column="user_property" property="userproperty"/>
+        <result column="user_vehicle" property="uservehicle"/>
+        <result column="login_count" property="logincount"/>
+        <result column="login_status" property="loginstatus"/>
+    </resultMap>
+
+    <select id="queryByUserPhone" parameterType="string" resultMap="userMap">
+        select * from t_user where user_phone =#{userPhone}
+    </select>
+
+    <insert id="register" parameterType="com.p2p.model.User">
+        insert into t_user
+        (user_phone, user_pwd, user_sex,user_age,user_education,user_marriage,found_time,login_time,user_work_time,user_income,
+        user_property,user_vehicle,login_count,login_status)
+        values (#{userphone},#{userpwd},#{usersex},#{userage},#{usereducation},#{usermarriage},#{foundtime},#{logintime},
+        #{userworktime},#{userincome},#{userproperty},#{uservehicle},#{logincount},#{loginstatus})
+    </insert>
+
+    <update id="updateLogincount" parameterType="com.p2p.model.User">
+        update t_user set login_count=#{logincount},login_status=#{loginstatus},login_time=#{logintime} where id=#{id}
+    </update>
+    <update id="updateLoginstatus" parameterType="com.p2p.model.User">
+        update t_user set login_status=#{loginstatus},login_status=#{loginstatus},login_time=#{logintime} where id=#{id}
+    </update>
+
 </mapper>

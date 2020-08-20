@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.fh.mapper.AccountMapper;
 import com.fh.model.Account;
 import com.fh.service.AccountService;
+import com.fh.util.RandomCreditCardNumberGenerator;
 import com.fh.util.ServerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -68,7 +69,9 @@ public class AccountServiceImpl implements AccountService {
     public ServerResponse addAccount(Account account) {
         try {
             account.setNewTime(new Date());
-            account.setUserId(6);
+            account.setUserId(5);
+            String bank_account = RandomCreditCardNumberGenerator.get_Bank_account();
+            account.setVirtualBankId(bank_account);
             accountMapper.insert(account);
         }catch (Exception e){
             return ServerResponse.error("开户失败，请稍后再试。");
