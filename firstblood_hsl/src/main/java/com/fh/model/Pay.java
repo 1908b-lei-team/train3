@@ -34,6 +34,10 @@ public class Pay {
     @TableField("user_balance")
     private BigDecimal balance;//当前可用余额
 
+    @TableField("general_assets")
+    private BigDecimal generalassets;//账户余额
+
+
     @TableField("deal_password")
     private  String  dealpassword;//交易密码
 
@@ -65,6 +69,13 @@ public class Pay {
     @TableField("join_the")
     private Integer joinThe;//加入人次
 
+    public BigDecimal getGeneralassets() {
+        return generalassets;
+    }
+
+    public void setGeneralassets(BigDecimal generalassets) {
+        this.generalassets = generalassets;
+    }
 
     public Integer getId() {
         return id;

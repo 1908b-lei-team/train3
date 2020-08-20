@@ -15,17 +15,15 @@ public class PayServiceImpl implements PayService {
     @Resource
     private PayMapper  payMapper;
 
-    @Override
-    public ServerResponse querybalance(Integer id) {
-        QueryWrapper<Pay> queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("id",id);
-        Pay pay = payMapper.selectById(queryWrapper);
-        return ServerResponse.success(pay.getBalance());
-    }
 
+
+    //查询信息
     @Override
     public ServerResponse queryList() {
         List<Pay> list = payMapper.selectList(null);
         return ServerResponse.success(list);
     }
+
+
+
 }
