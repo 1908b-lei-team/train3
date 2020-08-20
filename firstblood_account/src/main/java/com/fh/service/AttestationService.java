@@ -7,4 +7,6 @@ public interface AttestationService {
     ServerResponse realNameAuthentication(Attestation attestation);
 
     ServerResponse checkIdNumber(String idNumber);
+
+    ServerResponse queryInfo();
 }
