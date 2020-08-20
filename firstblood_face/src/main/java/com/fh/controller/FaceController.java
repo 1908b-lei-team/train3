@@ -54,7 +54,7 @@ public class FaceController {
     @RequestMapping(value = "/faceAdd", method = RequestMethod.POST)
     @ResponseBody
     public Result<Object> faceAdd(@RequestParam("file") String file, @RequestParam("groupId") Integer groupId, @RequestParam("name") String name) {
-        String[] strings = new String[9];
+
         try {
             if (file == null) {
                 return Results.newFailedResult("file is null");
