@@ -6,7 +6,6 @@
         <id column="id" property="id" javaType="int"/>
         <result column="group_id" property="groupId" javaType="java.lang.Integer"/>
         <result column="face_id" property="faceId" javaType="String"/>
-        <result column="phone_number" property="phoneNumber" javaType="String"/>
         <result column="create_time" property="createTime" javaType="java.util.Date"/>
         <result column="face_feature" property="faceFeature"/>
     </resultMap>
@@ -15,7 +14,6 @@
         <id column="id" property="id" javaType="int"/>
         <result column="group_id" property="groupId" javaType="java.lang.Integer"/>
         <result column="face_id" property="faceId" javaType="String"/>
-        <result column="phone_number" property="phoneNumber" javaType="String"/>
         <result column="create_time" property="createTime" javaType="java.util.Date"/>
         <result column="face_feature" property="faceFeature"/>
     </resultMap>

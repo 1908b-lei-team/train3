@@ -8,7 +8,7 @@ public class FirstbloodAccountApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(FirstbloodAccountApplication.class, args);
-        String aaa;
+      //  String aaa;
     }
 
 }
