@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/firstblood_eureka_server/firstblood_eureka_server.iml" filepath="$PROJECT_DIR$/firstblood_eureka_server/firstblood_eureka_server.iml" />
-      <module fileurl="file://$PROJECT_DIR$/train_p2p.iml" filepath="$PROJECT_DIR$/train_p2p.iml" />
-    </modules>
-  </component>
-</project>
