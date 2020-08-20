@@ -51,6 +51,7 @@ public class FaceController {
     public Result<Object> faceAdd(@RequestParam("file") String file, @RequestParam("groupId") Integer groupId, @RequestParam("name") String name) {
 
 
+
         try {
             if (file == null) {
                 return Results.newFailedResult("file is null");
