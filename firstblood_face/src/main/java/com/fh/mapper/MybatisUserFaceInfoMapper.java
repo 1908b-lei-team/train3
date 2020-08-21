@@ -4,6 +4,7 @@ import com.fh.dto.FaceUserInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Map;
 
 
 @Mapper
@@ -14,4 +15,6 @@ public interface MybatisUserFaceInfoMapper {
     void insertUserFaceInfo(UserFaceInfo userFaceInfo);
 
     List<FaceUserInfo> getUserFaceInfoByGroupId(Integer groupId);
+
+    UserFaceInfo findFaceInfoByName(String name);
 }

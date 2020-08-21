@@ -54,7 +54,13 @@ public class FaceController {
     @RequestMapping(value = "/faceAdd", method = RequestMethod.POST)
     @ResponseBody
     public Result<Object> faceAdd(@RequestParam("file") String file, @RequestParam("groupId") Integer groupId, @RequestParam("name") String name) {
-
+        if("".equals(name)){
+            return Results.newFailedResult("姓名为空");
+        }
+        UserFaceInfo userFaceInfoDb = faceEngineService.findFaceInfoByName(name);
+        if(userFaceInfoDb != null){
+            return Results.newFailedResult("该姓名已人脸注册");
+        }
         try {
             if (file == null) {
                 return Results.newFailedResult("file is null");
