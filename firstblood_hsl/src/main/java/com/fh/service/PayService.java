@@ -2,6 +2,7 @@ package com.fh.service;
 
 
 import com.fh.common.ServerResponse;
+import com.fh.model.Pay;
 
 public interface PayService {
 
@@ -10,4 +11,6 @@ public interface PayService {
     ServerResponse queryList();
 
     ServerResponse querygeneralassets(Integer id);
+
+    ServerResponse onSubmit(Pay pay,Integer id);
 }

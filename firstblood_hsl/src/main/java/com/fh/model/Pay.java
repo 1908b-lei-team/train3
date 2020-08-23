@@ -12,9 +12,12 @@ import java.util.Date;
 @TableName("t_pay")
 public class Pay {
     @TableId(type = IdType.INPUT)
-    private Integer id;
+    private Integer id;   //用户id
     @TableField("number")
     private String number;    //编号
+
+/*    @TableField("sign_id")
+    private Integer signid;   //标id*/
 
     @TableField("project_name")
     private String projectName;//项目名称
@@ -45,6 +48,9 @@ public class Pay {
     @TableField("borrow_money")
     private Double borrowMoney;   //借款金额
 
+    @TableField("loan_amount")
+    private Double loanamount;  //出借金额
+
 
     @TableField(exist = false)
     private  Double rateschedule;//满标进度
@@ -68,6 +74,22 @@ public class Pay {
 
     @TableField("join_the")
     private Integer joinThe;//加入人次
+
+    public Double getLoanamount() {
+        return loanamount;
+    }
+
+/*    public Integer getSignid() {
+        return signid;
+    }
+
+    public void setSignid(Integer signid) {
+        this.signid = signid;
+    }*/
+
+    public void setLoanamount(Double loanamount) {
+        this.loanamount = loanamount;
+    }
 
     public BigDecimal getGeneralassets() {
         return generalassets;

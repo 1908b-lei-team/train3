@@ -7,4 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface PayMapper extends BaseMapper<Pay> {
 
+    void addLoanamount(Double loanamount);
+
 }
