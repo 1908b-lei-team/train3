@@ -13,7 +13,6 @@ import java.util.Date;
 @TableName("t_control")
 public class Control {
     @TableId(type = IdType.INPUT)
-    @TableField("id")
     private Integer id;
     @TableField("number")
     private String number;    //编号
@@ -75,16 +74,6 @@ public class Control {
     private Integer isSign;//是否签约
     @TableField("loan_time")
     private Date loanTime;//loan_time
-    @TableField("fundraising_progress")
-    private String  fundraisingProgress;
-
-    public String getFundraisingProgress() {
-        return fundraisingProgress;
-    }
-
-    public void setFundraisingProgress(String fundraisingProgress) {
-        this.fundraisingProgress = fundraisingProgress;
-    }
 
     public Integer getId() {
         return id;
