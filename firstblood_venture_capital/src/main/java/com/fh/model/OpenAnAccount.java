@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -48,9 +50,11 @@ public class OpenAnAccount {
     @TableField("total_revenue")
     private Double totalRevenue; //总收益
     @TableField("lately_login_time")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date latelyLoginTime; //最近登录时间
     @TableField("login_count")
-    private Integer loginCount; //最近登录时间
+    private Integer loginCount; //登录次数
     @TableField("account_opening_status")
     private  Integer accountOpeningStatus;//开户状态
     @TableField("lockout_state")
