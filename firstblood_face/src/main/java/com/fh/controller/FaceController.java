@@ -43,15 +43,24 @@ public class FaceController {
     @Autowired
     UserFaceInfoService userFaceInfoService;
 
+    @RequestMapping(value = "/demo")
+    public String demo() {
+        return "demo";
+    }
+
     /*
     人脸添加
      */
     @RequestMapping(value = "/faceAdd", method = RequestMethod.POST)
     @ResponseBody
     public Result<Object> faceAdd(@RequestParam("file") String file, @RequestParam("groupId") Integer groupId, @RequestParam("name") String name) {
-
-
-
+        if("".equals(name)){
+            return Results.newFailedResult("姓名为空");
+        }
+        UserFaceInfo userFaceInfoDb = faceEngineService.findFaceInfoByName(name);
+        if(userFaceInfoDb != null){
+            return Results.newFailedResult("该姓名已人脸注册");
+        }
         try {
             if (file == null) {
                 return Results.newFailedResult("file is null");
@@ -102,6 +111,8 @@ public class FaceController {
         byte[] decode = Base64.decode(base64Process(file));
         BufferedImage bufImage = ImageIO.read(new ByteArrayInputStream(decode));
         ImageInfo imageInfo = ImageFactory.bufferedImage2ImageInfo(bufImage);
+
+
         //人脸特征获取
         byte[] bytes = faceEngineService.extractFaceFeature(imageInfo);
         if (bytes == null) {

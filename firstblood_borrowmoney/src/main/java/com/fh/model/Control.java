@@ -16,6 +16,8 @@ public class Control {
     private Integer id;
     @TableField("number")
     private String number;    //编号
+    @TableField("loanName")
+    private String loanName;
     @TableField("user_id")
     private Integer userId;   //用户id
     @TableField("product")
@@ -49,8 +51,8 @@ public class Control {
     @TableField("one_limit")
     private String oneLimit;//单人限额百分比
     @TableField("start_time")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy/MM/dd",timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd ")
     private Date startTime;//发售时间
     @TableField("sign_give_status")
     private String signGiveStatus;//借钱状态  借款中，待放款，还款中，已完成，流标
@@ -74,6 +76,15 @@ public class Control {
     private Integer isSign;//是否签约
     @TableField("loan_time")
     private Date loanTime;//loan_time
+
+
+    public String getLoanName() {
+        return loanName;
+    }
+
+    public void setLoanName(String loanName) {
+        this.loanName = loanName;
+    }
 
     public Integer getId() {
         return id;
