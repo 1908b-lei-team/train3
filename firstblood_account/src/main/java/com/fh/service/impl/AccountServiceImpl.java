@@ -3,6 +3,7 @@ package com.fh.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.fh.mapper.AccountMapper;
 import com.fh.model.Account;
+import com.fh.model.Attestation;
 import com.fh.service.AccountService;
 import com.fh.util.RandomCreditCardNumberGenerator;
 import com.fh.util.ServerResponse;
@@ -79,5 +80,14 @@ public class AccountServiceImpl implements AccountService {
         return ServerResponse.success("恭喜您，开户成功。");
     }
 
+
+    // 查询用户信息
+    @Override
+    public ServerResponse queryInfo2() {
+        QueryWrapper<Account> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("user_id",5);
+        Account account = accountMapper.selectOne(queryWrapper);
+        return ServerResponse.success(account);
+    }
 
 }

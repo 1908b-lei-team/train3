@@ -14,4 +14,6 @@ public interface AccountService {
     ServerResponse checkCreditCardNumbers(String checkCreditCardNumbers);
 
     ServerResponse checkBankPhone(String bankPhone);
+
+    ServerResponse queryInfo2();
 }
