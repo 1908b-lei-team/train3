@@ -21,5 +21,9 @@ public class ControlController {
        List<Control> list = controlService.queryList();
         return ServerResponse.success(list);
     }
+    @RequestMapping("addLoan")
+    public ServerResponse addLoan(Control control){
+        return  controlService.addLoan(control);
+    }
 
 }

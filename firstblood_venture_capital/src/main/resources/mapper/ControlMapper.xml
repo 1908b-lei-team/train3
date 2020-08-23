@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fh.mapper.control.ControlMapper">
+
+    <resultMap id="controMap" type="com.fh.vo.ControlVo">
+        <result property="controId" column="id"></result>
+        <result property="userId" column="user_id"></result>
+        <result property="number" column="number"></result>
+        <result property="product" column="product"></result>
+        <result property="isShowMark" column="is_show_mark"></result>
+        <result property="markType" column="mark_type"></result>
+        <result property="borrowMoney" column="borrow_money"></result>
+        <result property="isQuota" column="is_quota"></result>
+        <result property="annualRate" column="annual_rate"></result>
+        <result property="deadline" column="deadline"></result>
+
+        <result property="repaymentType" column="repayment_type"></result>
+        <result property="projectName" column="project_name"></result>
+        <result property="borrowExplain" column="borrow_explain"></result>
+        <result property="total" column="total"></result>
+        <result property="interest" column="interest"></result>
+        <result property="status" column="status"></result>
+        <result property="rateSchedule" column="rate_schedule"></result>
+
+        <result property="oneLimit" column="one_limit"></result>
+        <result property="startTime" column="start_time"></result>
+
+        <result property="signGiveStatus" column="sign_give_status"></result>
+        <result property="borrDays" column="borr_days"></result>
+        <result property="aheadPostMoney" column="ahead_post_money"></result>
+        <result property="loadPostMoney" column="load_post_money"></result>
+        <result property="serviceCharge" column="service_charge"></result>
+        <result property="suggest" column="suggest"></result>
+        <result property="contract" column="contract"></result>
+        <result property="joinThe" column="join_the"></result>
+        <result property="atMost" column="at_most"></result>
+        <result property="isSign" column="is_sign"></result>
+        <result property="loanTime" column="loan_time"></result>
+        <result property="fundraisingProgress" column="fundraising_progress"></result>
+
+
+        <result property="userName" column="user_name"></result>
+        <result property="bankPhone" column="bank_phone"></result>
+
+    </resultMap>
+
+    <resultMap id="checkInfoMap" type="com.fh.vo.CheckInfoVo">
+        <result property="controlId" column="id"></result>
+        <result property="userId" column="user_id"></result>
+        <result property="number" column="number"></result>
+        <result property="product" column="product"></result>
+        <result property="isShowMark" column="is_show_mark"></result>
+        <result property="markType" column="mark_type"></result>
+        <result property="borrowMoney" column="borrow_money"></result>
+        <result property="isQuota" column="is_quota"></result>
+        <result property="annualRate" column="annual_rate"></result>
+        <result property="deadline" column="deadline"></result>
+
+        <result property="repaymentType" column="repayment_type"></result>
+        <result property="projectName" column="project_name"></result>
+        <result property="borrowExplain" column="borrow_explain"></result>
+        <result property="total" column="total"></result>
+        <result property="interest" column="interest"></result>
+        <result property="status" column="status"></result>
+        <result property="rateSchedule" column="rate_schedule"></result>
+
+        <result property="oneLimit" column="one_limit"></result>
+        <result property="startTime" column="start_time"></result>
+
+        <result property="signGiveStatus" column="sign_give_status"></result>
+        <result property="borrDays" column="borr_days"></result>
+        <result property="aheadPostMoney" column="ahead_post_money"></result>
+        <result property="loadPostMoney" column="load_post_money"></result>
+        <result property="serviceCharge" column="service_charge"></result>
+        <result property="suggest" column="suggest"></result>
+        <result property="contract" column="contract"></result>
+        <result property="joinThe" column="join_the"></result>
+        <result property="atMost" column="at_most"></result>
+        <result property="isSign" column="is_sign"></result>
+        <result property="loanTime" column="loan_time"></result>
+        <result property="fundraisingProgress" column="fundraising_progress"></result>
+
+        <result column="id" property="userid"/>
+        <result column="user_phone" property="userphone"/>
+        <result column="user_pwd" property="userpwd"/>
+        <result column="user_sex" property="usersex"/>
+        <result column="user_age" property="userage"/>
+        <result column="user_education" property="usereducation"/>
+        <result column="user_marriage" property="usermarriage"/>
+        <result column="found_time" property="foundtime"/>
+        <result column="login_time" property="logintime"/>
+        <result column="user_work_time" property="userworktime"/>
+        <result column="user_income" property="userincome"/>
+        <result column="user_property" property="userproperty"/>
+        <result column="user_vehicle" property="uservehicle"/>
+        <result column="login_count" property="logincount"/>
+        <result column="login_status" property="loginstatus"/>
+    </resultMap>
+
+
+
+
+    <select id="selCount" resultType="java.lang.Integer">
+
+        select  count(*) from t_control   c left join t_open_an_account a on a.user_id = c.user_id
+    </select>
+
+    <select id="queryListPage" resultMap="controMap">
+
+        select  c.*,a.user_name,a.bank_phone from t_control c  left join t_open_an_account a on a.user_id = c.user_id
+            limit  #{startNum}, #{pagesize}
+    </select>
+
+
+    <select id="queryCheckInfo"  resultMap="checkInfoMap">
+
+        select c.*,u.* from t_control c left join t_user u on c.user_id = u.id
+        where c.id=#{id}
+
+    </select>
+</mapper>

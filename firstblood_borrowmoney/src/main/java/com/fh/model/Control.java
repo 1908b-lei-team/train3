@@ -16,6 +16,8 @@ public class Control {
     private Integer id;
     @TableField("number")
     private String number;    //编号
+    @TableField("loanName")
+    private String loanName;
     @TableField("user_id")
     private Integer userId;   //用户id
     @TableField("product")
@@ -74,6 +76,15 @@ public class Control {
     private Integer isSign;//是否签约
     @TableField("loan_time")
     private Date loanTime;//loan_time
+
+
+    public String getLoanName() {
+        return loanName;
+    }
+
+    public void setLoanName(String loanName) {
+        this.loanName = loanName;
+    }
 
     public Integer getId() {
         return id;
