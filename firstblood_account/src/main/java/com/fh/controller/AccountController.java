@@ -1,12 +1,9 @@
 package com.fh.controller;
 
 import com.fh.model.Account;
-import com.fh.model.Attestation;
 import com.fh.service.AccountService;
-import com.fh.service.AttestationService;
 import com.fh.util.ServerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -49,4 +46,14 @@ public class AccountController {
     }
 
 
+
+    // 查询用户信息
+    @RequestMapping("queryInfo2")
+    public ServerResponse queryInfo2(){
+     return accountService.queryInfo2();
+    }
+
+    @RequestMapping("ocr")
+    public void ocr(){
+    }
 }

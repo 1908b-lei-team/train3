@@ -3,6 +3,10 @@
 .idea/libraries/Maven__org_springframework_cloud_spring_cloud_netflix_archaius_2_2_2_RELEASE.xml
 .idea/libraries/Maven__org_latencyutils_LatencyUtils_2_0_3.xml
 .idea/encodings.xml
+<<<<<<< HEAD
+*.xml
+.idea/train3.iml
+=======
 .idea/compiler.xml
 .idea/libraries/
 .idea/misc.xml
@@ -14,3 +18,6 @@ firstblood_zuul/src/main/resources/static/
 firstblood_zuul/src/main/resources/templates/
 /.idea/dictionaries/Administrator.xml
 /.idea/workspace.xml
+.idea/workspace.xml
+.idea/uiDesigner.xml
+>>>>>>> 5d72acc308b839655868b2fc8677086af2549261
