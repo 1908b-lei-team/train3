@@ -25,5 +25,4 @@ public class ControlController {
     public ServerResponse addLoan(Control control){
         return  controlService.addLoan(control);
     }
-
 }

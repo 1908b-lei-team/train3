@@ -9,6 +9,4 @@ import java.util.List;
 @Mapper
 public interface ControlMapper extends BaseMapper<Control> {
 
-    List<Control> queryList();
-
 }

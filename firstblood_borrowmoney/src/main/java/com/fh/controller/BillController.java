@@ -18,7 +18,7 @@ public class BillController {
 
     @RequestMapping("queryBillList")
     public ServerResponse queryBillList(){
-        List<Bill> list = billService.queryBillList();
+      List<Bill> list = billService.queryBillList();
         return ServerResponse.success(list);
     }
 }

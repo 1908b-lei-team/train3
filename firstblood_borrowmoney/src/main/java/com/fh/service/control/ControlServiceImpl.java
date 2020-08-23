@@ -16,7 +16,7 @@ public  class ControlServiceImpl implements ControlService {
 
     @Override
     public List<Control> queryList() {
-        return controlMapper.queryList();
+        return controlMapper.selectList(null);
     }
 
     @Override
