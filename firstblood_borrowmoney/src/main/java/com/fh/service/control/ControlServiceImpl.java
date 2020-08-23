@@ -2,6 +2,7 @@ package com.fh.service.control;
 
 import com.fh.mapper.ControlMapper;
 import com.fh.model.Control;
+import com.fh.util.ServerResponse;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -15,6 +16,13 @@ public  class ControlServiceImpl implements ControlService {
 
     @Override
     public List<Control> queryList() {
-        return controlMapper.selectList(null);
+        return controlMapper.queryList();
     }
+
+    @Override
+    public ServerResponse addLoan(Control control) {
+        controlMapper.insert(control);
+        return ServerResponse.success();
+    }
+
 }
