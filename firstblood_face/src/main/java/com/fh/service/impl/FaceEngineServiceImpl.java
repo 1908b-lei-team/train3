@@ -5,6 +5,7 @@ import com.arcsoft.face.enums.DetectMode;
 import com.arcsoft.face.enums.DetectOrient;
 import com.arcsoft.face.enums.ImageFormat;
 import com.arcsoft.face.toolkit.ImageInfo;
+import com.fh.domain.UserFaceInfo;
 import com.fh.factory.FaceEngineFactory;
 import com.fh.mapper.MybatisUserFaceInfoMapper;
 import com.fh.service.FaceEngineService;
@@ -24,6 +25,7 @@ import javax.annotation.PostConstruct;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.*;
 
 
@@ -223,6 +225,11 @@ public class FaceEngineServiceImpl implements FaceEngineService {
         resultFaceInfoList.sort((h1, h2) -> h2.getSimilarValue().compareTo(h1.getSimilarValue()));//从大到小排序
 
         return resultFaceInfoList;
+    }
+
+    @Override
+    public UserFaceInfo findFaceInfoByName(String name) {
+        return userFaceInfoMapper.findFaceInfoByName(name);
     }
 
 

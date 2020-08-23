@@ -6,15 +6,15 @@
         <id column="id" property="id" javaType="int"/>
         <result column="group_id" property="groupId" javaType="java.lang.Integer"/>
         <result column="face_id" property="faceId" javaType="String"/>
+        <result column="name" property="name" javaType="String"/>
+        <result column="phone_number" property="phoneNumber" javaType="String"/>
         <result column="create_time" property="createTime" javaType="java.util.Date"/>
         <result column="face_feature" property="faceFeature"/>
     </resultMap>
 
     <resultMap id="userFace2" type="com.fh.dto.FaceUserInfo">
-        <id column="id" property="id" javaType="int"/>
-        <result column="group_id" property="groupId" javaType="java.lang.Integer"/>
         <result column="face_id" property="faceId" javaType="String"/>
-        <result column="create_time" property="createTime" javaType="java.util.Date"/>
+        <result column="name" property="name" javaType="String"/>
         <result column="face_feature" property="faceFeature"/>
     </resultMap>
 
@@ -29,5 +29,8 @@
 
     <select id="getUserFaceInfoByGroupId" resultMap="userFace2" parameterType="java.lang.Integer" resultType="com.fh.dto.FaceUserInfo">
         select face_id,name,face_feature from user_face_info
+    </select>
+    <select id="findFaceInfoByName" resultMap="userFace" parameterType="string" resultType="com.fh.domain.UserFaceInfo">
+        SELECT * from user_face_info where name= #{name}
     </select>
 </mapper>
