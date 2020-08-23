@@ -59,7 +59,7 @@ public class OpenAnAccountServiceImpl implements OpenAnAccountService {
         Integer count = openAnAccountMapper.selCount();
         //把总条数放入page
         openAnAccountParam.setCount(count);
-        Integer startNum =(openAnAccountParam.getCurrentPage()-1)*openAnAccountParam.getPagesize();
+        Integer startNum =(openAnAccountParam.getCurrentPage()-1)*openAnAccountParam.getPagesize()+1;
         openAnAccountParam.setStartNum(startNum);
         List<OpenAnAccountVo> list = openAnAccountMapper.queryListPage(openAnAccountParam);
         openAnAccountParam.setList(list);

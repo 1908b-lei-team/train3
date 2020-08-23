@@ -2,7 +2,6 @@ package com.fh.controller.control;
 
 import com.fh.common.ServerResponse;
 import com.fh.model.Control;
-import com.fh.param.ControParam;
 import com.fh.service.control.ControlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,22 +26,6 @@ public class ControlController {
         return  controlService.queryList();
     }
 
-    @RequestMapping("queryListPage")
-    public ServerResponse queryListPage(ControParam controParam){
-        return  controlService.queryListPage(controParam);
-    }
-
-
-    /**
-     * 查询初审复审的信息
-     * 两张表
-     * @param id
-     * @return
-     */
-    @RequestMapping("queryCheckInfo")
-    public ServerResponse queryCheckInfo(Integer id){
-        return  controlService.queryCheckInfo(id);
-    }
     /**
      * 插入
      * @param control

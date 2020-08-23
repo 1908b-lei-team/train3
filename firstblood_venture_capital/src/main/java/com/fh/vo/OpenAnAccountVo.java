@@ -118,8 +118,6 @@ public class OpenAnAccountVo {
     @TableField("lockout_state")
     private  Integer lockoutStatus;//锁定状态
 
-    @TableField("fundraising_progress")
-    private String  fundraisingProgress;
 
 
 }
