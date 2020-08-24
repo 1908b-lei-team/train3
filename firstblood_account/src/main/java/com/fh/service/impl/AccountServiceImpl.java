@@ -6,7 +6,7 @@ import com.fh.model.Account;
 import com.fh.model.Attestation;
 import com.fh.service.AccountService;
 import com.fh.util.RandomCreditCardNumberGenerator;
-import com.fh.util.ServerResponse;
+import com.fh.common.ServerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,9 +27,9 @@ public class AccountServiceImpl implements AccountService {
         queryWrapper.eq("user_name",userName);
         Account account = accountMapper.selectOne(queryWrapper);
         if (account!=null){
-            return ServerResponse.error("用户已存在");
+            return ServerResponse.errorMethod(2000);
         }
-        return ServerResponse.success();
+        return ServerResponse.successMethod(1000);
     }
 
     @Override
@@ -38,9 +38,9 @@ public class AccountServiceImpl implements AccountService {
         queryWrapper.eq("id_number",idNumber);
         Account account = accountMapper.selectOne(queryWrapper);
         if (account!=null){
-            return ServerResponse.error("此身份证已绑定其他账户。");
+            return ServerResponse.errorMethod(2000);
         }
-        return ServerResponse.success();
+        return ServerResponse.successMethod(1000);
     }
 
     @Override
@@ -49,9 +49,9 @@ public class AccountServiceImpl implements AccountService {
         queryWrapper.eq("credit_card_numbers",checkCreditCardNumbers);
         Account account = accountMapper.selectOne(queryWrapper);
         if (account!=null){
-            return ServerResponse.error("此银行卡已绑定其他账户。");
+            return ServerResponse.errorMethod(2000);
         }
-        return ServerResponse.success();
+        return ServerResponse.successMethod(1000);
     }
 
     @Override
@@ -60,9 +60,9 @@ public class AccountServiceImpl implements AccountService {
         queryWrapper.eq("bank_phone",bankPhone);
         Account account = accountMapper.selectOne(queryWrapper);
         if (account!=null){
-            return ServerResponse.error("此号码已绑定其他账户");
+            return ServerResponse.errorMethod(2000);
         }
-        return ServerResponse.success();
+        return ServerResponse.successMethod(1000);
     }
 
     // 开户
@@ -74,10 +74,10 @@ public class AccountServiceImpl implements AccountService {
             String bank_account = RandomCreditCardNumberGenerator.get_Bank_account();
             account.setVirtualBankId(bank_account);
             accountMapper.insert(account);
+            return ServerResponse.successMethod(1000);
         }catch (Exception e){
-            return ServerResponse.error("开户失败，请稍后再试。");
+            return ServerResponse.errorMethod(1000);
         }
-        return ServerResponse.success("恭喜您，开户成功。");
     }
 
 
@@ -87,7 +87,7 @@ public class AccountServiceImpl implements AccountService {
         QueryWrapper<Account> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_id",5);
         Account account = accountMapper.selectOne(queryWrapper);
-        return ServerResponse.success(account);
+        return ServerResponse.successMethod(account);
     }
 
 }

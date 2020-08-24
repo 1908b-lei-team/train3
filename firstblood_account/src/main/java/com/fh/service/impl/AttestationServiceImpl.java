@@ -7,7 +7,7 @@ import com.fh.model.Attestation;
 import com.fh.model.User;
 import com.fh.service.AttestationService;
 import com.fh.service.UserService;
-import com.fh.util.ServerResponse;
+import com.fh.common.ServerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +35,7 @@ public class AttestationServiceImpl implements AttestationService {
             attestationMapper.insert(attestation);
             userService.updStatus(user);
         }
-        return ServerResponse.success("实名认证成功");
+        return ServerResponse.successMethod(1000);
     }
 
     @Override
@@ -44,9 +44,9 @@ public class AttestationServiceImpl implements AttestationService {
         queryWrapper.eq("id_number",idNumber);
         Attestation attestation = attestationMapper.selectOne(queryWrapper);
         if (attestation!=null){
-            return ServerResponse.error("此身份证已绑定其他账户。");
+            return ServerResponse.errorMethod(2000);
         }
-        return ServerResponse.success();
+        return ServerResponse.successMethod(1000);
     }
 
     @Override
@@ -54,7 +54,7 @@ public class AttestationServiceImpl implements AttestationService {
         QueryWrapper<Attestation> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_id",5);
         Attestation attestation = attestationMapper.selectOne(queryWrapper);
-        return ServerResponse.success(attestation);
+        return ServerResponse.successMethod(attestation);
     }
 
 

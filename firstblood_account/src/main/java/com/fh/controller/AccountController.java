@@ -1,8 +1,8 @@
 package com.fh.controller;
 
+import com.fh.common.ServerResponse;
 import com.fh.model.Account;
 import com.fh.service.AccountService;
-import com.fh.util.ServerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
