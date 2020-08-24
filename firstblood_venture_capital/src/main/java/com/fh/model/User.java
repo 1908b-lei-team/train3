@@ -45,6 +45,26 @@ public class User {
 
     private String loginstatus;//` varchar(255) DEFAULT NULL COMMENT '是否锁定',
 
+    private String useridentity;//用户身份
+
+    private String username; //用户名
+
+    public String getUseridentity() {
+        return useridentity;
+    }
+
+    public void setUseridentity(String useridentity) {
+        this.useridentity = useridentity;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public int getId() {
         return id;
     }
