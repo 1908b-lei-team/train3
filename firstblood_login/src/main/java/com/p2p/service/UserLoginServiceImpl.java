@@ -1,12 +1,12 @@
 package com.p2p.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.fh.common.ServerResponse;
 import com.p2p.mapper.UserLoginMapper;
 import com.p2p.model.User;
 import com.p2p.util.JwtUtil;
 import com.p2p.util.MD5Util;
 import com.p2p.util.RedisUtil;
-import com.p2p.util.ServerResponse;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -40,10 +40,10 @@ public class UserLoginServiceImpl implements UserLoginService {
 
         //判断用户注册的手机号是否存在如果存在返回一个状态告诉用户手机号已注册
         if (user==null){
-            return ServerResponse.success();
+            return ServerResponse.successMethod();
         }
 
-        return ServerResponse.error();
+        return ServerResponse.errorMethod();
     }
 
     //用户登录
@@ -55,7 +55,7 @@ public class UserLoginServiceImpl implements UserLoginService {
 
         //判断用户是否存在
         if(queryByUserPhone==null){
-            return ServerResponse.error("手机号不存在");
+            return ServerResponse.errorMethod("手机号不存在");
         }
 
         //超过24小时解除限制
@@ -70,13 +70,11 @@ public class UserLoginServiceImpl implements UserLoginService {
                 queryByUserPhone.setLogintime(null);
                 userLoginMapper.updateLogincount(queryByUserPhone);
             }else {
-                return ServerResponse.error("该账号已锁定请第二天在尝试登录");
+                return ServerResponse.errorMethod("该账号已锁定请第二天在尝试登录");
             }
         }
-
-
         if("锁定".equals(queryByUserPhone.getLoginstatus())){
-            return ServerResponse.error("该账号已锁定请第二天在尝试登录");
+            return ServerResponse.errorMethod("该账号已锁定请第二天在尝试登录");
         }
 
 
@@ -90,10 +88,10 @@ public class UserLoginServiceImpl implements UserLoginService {
                     queryByUserPhone.setLoginstatus("锁定");
                     queryByUserPhone.setLogintime(new Date());
                     userLoginMapper.updateLoginstatus(queryByUserPhone);
-                    return ServerResponse.error("密码错误3次该账号已被锁定");
+                    return ServerResponse.errorMethod("密码错误3次该账号已被锁定");
                 }
             userLoginMapper.updateLogincount(queryByUserPhone);
-            return ServerResponse.error("密码不正确，目前密码错误次数"+queryByUserPhone.getLogincount()+"如果超过三次将被锁定一天");
+            return ServerResponse.errorMethod("密码不正确，目前密码错误次数"+queryByUserPhone.getLogincount()+"如果超过三次将被锁定一天");
         }
 
         String token = null;
@@ -105,6 +103,12 @@ public class UserLoginServiceImpl implements UserLoginService {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        return ServerResponse.success(token);
+        return ServerResponse.successMethod(token);
+    }
+
+    @Override
+    public ServerResponse queryByUserName(String userName) {
+        User user = userLoginMapper.queryByUserName(userName);
+        return ServerResponse.successMethod(user);
     }
 }

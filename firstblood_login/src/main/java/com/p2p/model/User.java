@@ -37,6 +37,66 @@ public class User {
 
     private String loginstatus;//` varchar(255) DEFAULT NULL COMMENT '是否锁定',
 
+    private String username;//` varchar(255) DEFAULT NULL COMMENT '用户名',
+
+    private String idnumber;//` varchar(255) DEFAULT NULL COMMENT '身份证号码',
+
+    private String userstatus;//` varchar(255) DEFAULT NULL COMMENT '是否绑定',
+
+    private String userrole;//` varchar(255) DEFAULT NULL COMMENT '',
+
+    private String pwdsaly;//` varchar(255) DEFAULT NULL COMMENT '',
+
+    private Date updatetime;//` varchar(255) DEFAULT NULL COMMENT '修改时间',
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getIdnumber() {
+        return idnumber;
+    }
+
+    public void setIdnumber(String idnumber) {
+        this.idnumber = idnumber;
+    }
+
+    public String getUserstatus() {
+        return userstatus;
+    }
+
+    public void setUserstatus(String userstatus) {
+        this.userstatus = userstatus;
+    }
+
+    public String getUserrole() {
+        return userrole;
+    }
+
+    public void setUserrole(String userrole) {
+        this.userrole = userrole;
+    }
+
+    public String getPwdsaly() {
+        return pwdsaly;
+    }
+
+    public void setPwdsaly(String pwdsaly) {
+        this.pwdsaly = pwdsaly;
+    }
+
+    public Date getUpdatetime() {
+        return updatetime;
+    }
+
+    public void setUpdatetime(Date updatetime) {
+        this.updatetime = updatetime;
+    }
+
     public int getId() {
         return id;
     }

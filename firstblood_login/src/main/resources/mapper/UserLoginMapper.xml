@@ -21,6 +21,12 @@
         <result column="user_vehicle" property="uservehicle"/>
         <result column="login_count" property="logincount"/>
         <result column="login_status" property="loginstatus"/>
+        <result column="user_name" property="username"/>
+        <result column="id_number" property="idnumber"/>
+        <result column="user_status" property="userstatus"/>
+        <result column="user_role" property="userrole"/>
+        <result column="pwd_saly" property="pwdsaly"/>
+        <result column="update_time" property="updatetime"/>
     </resultMap>
 
     <select id="queryByUserPhone" parameterType="string" resultMap="userMap">
@@ -41,5 +47,10 @@
     <update id="updateLoginstatus" parameterType="com.p2p.model.User">
         update t_user set login_status=#{loginstatus},login_status=#{loginstatus},login_time=#{logintime} where id=#{id}
     </update>
+
+    <select id="queryByUserName" parameterType="string" resultMap="userMap">
+        select * from t_user where user_name =#{userName}
+    </select>
+
 
 </mapper>
