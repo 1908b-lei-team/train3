@@ -14,10 +14,8 @@ import com.fh.domain.UserFaceInfo;
 import com.fh.service.FaceEngineService;
 import com.fh.service.UserFaceInfoService;
 import com.fh.dto.FaceUserInfo;
-import com.fh.base.Result;
-import com.fh.base.Results;
-import com.fh.enums.ErrorCodeEnum;
 import com.arcsoft.face.FaceInfo;
+import com.fh.service.login.LoginService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +34,8 @@ import java.util.List;
 @Controller
 @RequestMapping("face")
 public class FaceController {
-
+    @Autowired
+    private LoginService loginService;
     public final static Logger logger = LoggerFactory.getLogger(FaceController.class);
     @Autowired
     FaceEngineService faceEngineService;
@@ -155,6 +154,11 @@ public class FaceController {
                 //faceSearchResDto.setAge(processInfoList.get(0).getAge());
                 faceSearchResDto.setGender(processInfoList.get(0).getGender().equals(1) ? "女士" : "先生");
             }
+            ServerResponse serverResponse = loginService.queryByUserName(faceSearchResDto.getName());
+            Object data = serverResponse.getData();
+
+
+
             //这里写生成token消息，以及加入redis 操作
             //TokenUtil.
             return ServerResponse.successMethod(faceSearchResDto);

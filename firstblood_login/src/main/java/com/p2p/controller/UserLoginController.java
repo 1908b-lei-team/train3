@@ -5,10 +5,11 @@ import com.p2p.model.User;
 import com.p2p.service.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("userLoginControlle")
+@RequestMapping("userLoginController")
 public class UserLoginController {
 
     @Autowired
@@ -28,7 +29,7 @@ public class UserLoginController {
     }
     //查询用户名称
     @RequestMapping("queryByUserName")
-    public ServerResponse queryByUserName(String userName){
+    public ServerResponse queryByUserName(@RequestParam("userName") String userName){
         return userLoginService.queryByUserName(userName);
     }
 
