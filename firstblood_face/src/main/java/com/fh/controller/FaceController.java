@@ -34,6 +34,7 @@ import java.util.List;
 
 @Controller
 @CrossOrigin
+@RequestMapping("face")
 public class FaceController {
 
     public final static Logger logger = LoggerFactory.getLogger(FaceController.class);
@@ -44,6 +45,7 @@ public class FaceController {
     UserFaceInfoService userFaceInfoService;
 
     @RequestMapping(value = "/demo")
+    @ResponseBody
     public String demo() {
         return "demo";
     }
