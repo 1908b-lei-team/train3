@@ -6,11 +6,15 @@
 <mapper namespace="com.fh.mapper.PayMapper">
 
 
-<insert id="addLoanamount" parameterType="com.fh.model.Pay">
+<update id="addLoanamount" parameterType="com.fh.model.Pay">
 
     update  t_pay set  loan_amount =#{loan_amount} where id=#{id};
 
-</insert>
+</update>
+
+    <insert id="insertRelevance" parameterType="com.fh.model.Relevance">
+        insert into t_p2p_relevance (id,userId,signId,freezeMoney) values (#{id},#{userId},#{signId},#{freezeMoney})
+    </insert>
 
 
 </mapper>

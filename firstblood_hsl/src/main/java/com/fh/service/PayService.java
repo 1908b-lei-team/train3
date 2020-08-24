@@ -13,4 +13,8 @@ public interface PayService {
     ServerResponse querygeneralassets(Integer id);
 
     ServerResponse onSubmit(Pay pay);
+
+    ServerResponse querybalance(Integer id);
+
+   /* ServerResponse gotop(Pay pay);*/
 }

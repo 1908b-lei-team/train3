@@ -12,9 +12,12 @@ import java.util.Date;
 @TableName("t_pay")
 public class Pay {
     @TableId(type = IdType.INPUT)
-    private Integer id;   //用户id
+    private Integer id;   //项目id
     @TableField("number")
     private String number;    //编号
+    @TableField("user_id")
+    private Integer userId;//用户id
+
 
 /*    @TableField("sign_id")
     private Integer signid;   //标id*/
@@ -83,6 +86,14 @@ public class Pay {
     public void setSignid(Integer signid) {
         this.signid = signid;
     }*/
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
     public BigDecimal getBorrowMoney() {
         return borrowMoney;

@@ -24,6 +24,7 @@ public class PayController {
     }
 
 
+    //查询账户余额
     @RequestMapping("querygeneralassets")
     public  ServerResponse  querygeneralassets(Integer id){
         return payService.querygeneralassets(id);
@@ -35,4 +36,18 @@ public class PayController {
         return  payService.onSubmit(pay);
     }
 
+
+
+    //查询账户当前可用余额
+    @RequestMapping("querybalance")
+    public  ServerResponse  querybalance(Integer id){
+        return payService.querybalance(id);
+    }
+
+
+   /* //去充值
+    @RequestMapping("gotop")
+    public  ServerResponse  gotop(Pay pay){
+    return  payService.gotop(pay);
+    }*/
 }
