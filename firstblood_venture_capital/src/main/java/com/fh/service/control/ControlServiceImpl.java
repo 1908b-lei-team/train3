@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -65,7 +66,13 @@ public class ControlServiceImpl implements ControlService {
 
     @Override
     public ServerResponse queryCheckInfo(Integer id) {
-        List<CheckInfoVo> list = controlMapper.queryCheckInfo(id);
-        return ServerResponse.successMethod(list);
+        CheckInfoVo checkInfoVo = controlMapper.queryCheckInfo(id);
+        return ServerResponse.successMethod(checkInfoVo);
+    }
+
+    @Override
+    public void updateCheckStatu(String status, Integer userId) {
+        Date reviewTime = new Date();
+        controlMapper.updateCheckStatu(status,userId,reviewTime);
     }
 }
