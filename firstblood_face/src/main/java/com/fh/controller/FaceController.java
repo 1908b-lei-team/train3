@@ -34,7 +34,6 @@ import java.util.List;
 
 
 @Controller
-@CrossOrigin
 @RequestMapping("face")
 public class FaceController {
 
@@ -56,23 +55,28 @@ public class FaceController {
      */
     @RequestMapping(value = "/faceAdd", method = RequestMethod.POST)
     @ResponseBody
-    public Result<Object> faceAdd(@RequestParam("file") String file, @RequestParam("groupId") Integer groupId, @RequestParam("name") String name) {
+    public ServerResponse faceAdd(@RequestParam("file") String file, @RequestParam("groupId") Integer groupId, @RequestParam("name") String name) {
         if("".equals(name)){
-            return Results.newFailedResult("姓名为空");
+            //return Results.newFailedResult("姓名为空");
+            return ServerResponse.errorMethod("姓名为空");
         }
         UserFaceInfo userFaceInfoDb = faceEngineService.findFaceInfoByName(name);
         if(userFaceInfoDb != null){
-            return Results.newFailedResult("该姓名已人脸注册");
+            //return Results.newFailedResult("该姓名已人脸注册");
+            return ServerResponse.errorMethod("该姓名已人脸注册");
         }
         try {
             if (file == null) {
-                return Results.newFailedResult("file is null");
+                //return Results.newFailedResult("file is null");
+                return ServerResponse.errorMethod("file is null");
             }
             if (groupId == null) {
-                return Results.newFailedResult("groupId is null");
+                //return Results.newFailedResult("groupId is null");
+                return ServerResponse.errorMethod("groupId is null");
             }
             if (name == null) {
-                return Results.newFailedResult("name is null");
+                //return Results.newFailedResult("name is null");
+                return ServerResponse.errorMethod("name is null");
             }
 
             byte[] decode = Base64.decode(base64Process(file));
@@ -81,7 +85,8 @@ public class FaceController {
             //人脸特征获取
             byte[] bytes = faceEngineService.extractFaceFeature(imageInfo);
             if (bytes == null) {
-                return Results.newFailedResult(ErrorCodeEnum.NO_FACE_DETECTED);
+                //return Results.newFailedResult(ErrorCodeEnum.NO_FACE_DETECTED);
+                return ServerResponse.errorMethod("无人脸识别特征");
             }
 
             UserFaceInfo userFaceInfo = new UserFaceInfo();
@@ -94,11 +99,13 @@ public class FaceController {
             userFaceInfoService.insertSelective(userFaceInfo);
 
             logger.info("faceAdd:" + name);
-            return Results.newSuccessResult("");
+            //return Results.newSuccessResult("");
+            return ServerResponse.successMethod("人脸特征插入成功");
         } catch (Exception e) {
             logger.error("", e);
         }
-        return Results.newFailedResult(ErrorCodeEnum.UNKNOWN);
+        //return Results.newFailedResult(ErrorCodeEnum.UNKNOWN);
+        return ServerResponse.errorMethod("人脸特征插入error");
     }
 
     /*
@@ -157,7 +164,7 @@ public class FaceController {
     }
 
 
-    @RequestMapping(value = "/detectFaces", method = RequestMethod.POST)
+   /* @RequestMapping(value = "/detectFaces", method = RequestMethod.POST)
     @ResponseBody
     public List<FaceInfo> detectFaces(String image) throws IOException {
         byte[] decode = Base64.decode(image);
@@ -170,7 +177,7 @@ public class FaceController {
         List<FaceInfo> faceInfoList = faceEngineService.detectFaces(imageInfo);
 
         return faceInfoList;
-    }
+    }*/
 
 
     private String base64Process(String base64Str) {
