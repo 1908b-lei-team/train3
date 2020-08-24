@@ -21,4 +21,7 @@ public class BillController {
       List<Bill> list = billService.queryBillList();
         return ServerResponse.success(list);
     }
+
+
+
 }
