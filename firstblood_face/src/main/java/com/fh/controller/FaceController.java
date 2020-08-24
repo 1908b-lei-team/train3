@@ -5,9 +5,11 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.codec.Base64;
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.RandomUtil;
+import com.alibaba.fastjson.JSONObject;
 import com.arcsoft.face.toolkit.ImageFactory;
 import com.arcsoft.face.toolkit.ImageInfo;
 import com.fh.common.ServerResponse;
+import com.fh.domain.User;
 import com.fh.dto.FaceSearchResDto;
 import com.fh.dto.ProcessInfo;
 import com.fh.domain.UserFaceInfo;
@@ -16,6 +18,8 @@ import com.fh.service.UserFaceInfoService;
 import com.fh.dto.FaceUserInfo;
 import com.arcsoft.face.FaceInfo;
 import com.fh.service.login.LoginService;
+import com.fh.util.JwtUtil;
+import com.fh.util.RedisUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +32,10 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -155,13 +162,33 @@ public class FaceController {
                 faceSearchResDto.setGender(processInfoList.get(0).getGender().equals(1) ? "女士" : "先生");
             }
             ServerResponse serverResponse = loginService.queryByUserName(faceSearchResDto.getName());
-            Object data = serverResponse.getData();
+
+            if(serverResponse.getData() == null){
+                return ServerResponse.errorMethod("人脸信息不存在");
+            }
 
 
+            User user = new User();
 
+            Map map1 = (Map) serverResponse.getData();
+            String id = map1.get("id").toString();
+            user.setId(Integer.valueOf(id));
+            user.setUsername(map1.get("username").toString());
             //这里写生成token消息，以及加入redis 操作
             //TokenUtil.
-            return ServerResponse.successMethod(faceSearchResDto);
+            String token = null;
+            try {
+                String jsonString = JSONObject.toJSONString(user);
+                String encode = URLEncoder.encode(jsonString, "utf-8");
+                token = JwtUtil.sign(encode);
+                RedisUtil.set(token,token,30*60*1000);
+                Map<String, Object> map = new HashMap<String, Object>();
+                map.put("token",token);
+                map.put("faceSearchResDto",faceSearchResDto);
+                return ServerResponse.successMethod(map);
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
         }
 
         return ServerResponse.errorMethod("人脸不匹配");
