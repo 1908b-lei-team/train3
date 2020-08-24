@@ -157,6 +157,8 @@ public class FaceController {
             ServerResponse serverResponse = loginService.queryByUserName(faceSearchResDto.getName());
             Object data = serverResponse.getData();
 
+
+
             //这里写生成token消息，以及加入redis 操作
             //TokenUtil.
             return ServerResponse.successMethod(faceSearchResDto);
