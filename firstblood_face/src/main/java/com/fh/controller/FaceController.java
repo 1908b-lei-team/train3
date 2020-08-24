@@ -7,6 +7,7 @@ import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.RandomUtil;
 import com.arcsoft.face.toolkit.ImageFactory;
 import com.arcsoft.face.toolkit.ImageInfo;
+import com.fh.common.ServerResponse;
 import com.fh.dto.FaceSearchResDto;
 import com.fh.dto.ProcessInfo;
 import com.fh.domain.UserFaceInfo;
@@ -105,10 +106,10 @@ public class FaceController {
      */
     @RequestMapping(value = "/faceSearch", method = RequestMethod.POST)
     @ResponseBody
-    public Result<FaceSearchResDto> faceSearch(String file, Integer groupId) throws Exception {
+    public ServerResponse faceSearch(String file, Integer groupId) throws Exception {
 
         if (groupId == null) {
-            return Results.newFailedResult("groupId is null");
+            return ServerResponse.errorMethod("groupId is null");
         }
         byte[] decode = Base64.decode(base64Process(file));
         BufferedImage bufImage = ImageIO.read(new ByteArrayInputStream(decode));
@@ -118,11 +119,10 @@ public class FaceController {
         //人脸特征获取
         byte[] bytes = faceEngineService.extractFaceFeature(imageInfo);
         if (bytes == null) {
-            return Results.newFailedResult(ErrorCodeEnum.NO_FACE_DETECTED);
+            return ServerResponse.errorMethod("无人脸识别特征");
         }
         //人脸比对，获取比对结果
         List<FaceUserInfo> userFaceInfoList = faceEngineService.compareFaceFeature(bytes, groupId);
-
         if (CollectionUtil.isNotEmpty(userFaceInfoList)) {
             FaceUserInfo faceUserInfo = userFaceInfoList.get(0);
             FaceSearchResDto faceSearchResDto = new FaceSearchResDto();
@@ -145,14 +145,15 @@ public class FaceController {
                 ImageIO.write(bufImage, "jpg", outputStream);
                 byte[] bytes1 = outputStream.toByteArray();
                 faceSearchResDto.setImage("data:image/jpeg;base64," + Base64Utils.encodeToString(bytes1));
-                faceSearchResDto.setAge(processInfoList.get(0).getAge());
-                faceSearchResDto.setGender(processInfoList.get(0).getGender().equals(1) ? "女" : "男");
-
+                //faceSearchResDto.setAge(processInfoList.get(0).getAge());
+                faceSearchResDto.setGender(processInfoList.get(0).getGender().equals(1) ? "女士" : "先生");
             }
-
-            return Results.newSuccessResult(faceSearchResDto);
+            //这里写生成token消息，以及加入redis 操作
+            //TokenUtil.
+            return ServerResponse.successMethod(faceSearchResDto);
         }
-        return Results.newFailedResult(ErrorCodeEnum.FACE_DOES_NOT_MATCH);
+
+        return ServerResponse.errorMethod("人脸不匹配");
     }
 
 
