@@ -5,9 +5,6 @@ public enum ServerEnum {
     SUCCESS(1000, "操作成功"),
     ERROR(2000, "操作失败"),
     LOGINERROR(500, "登录失败"),
-    PRODUCT_NOT_EXIST(1001, "商品不存在"),
-    PRODUCT_NOT_STATUS(1002, "商品未上架"),
-    PRODUCT_STOCK_NULL(10023, "库存不足"),
     ;
 
     private Integer code;
