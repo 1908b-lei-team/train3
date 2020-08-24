@@ -2,7 +2,7 @@ package com.fh.controller;
 
 import com.fh.model.Attestation;
 import com.fh.service.AttestationService;
-import com.fh.util.ServerResponse;
+import com.fh.common.ServerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;

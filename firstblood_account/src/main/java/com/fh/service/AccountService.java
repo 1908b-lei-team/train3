@@ -1,7 +1,7 @@
 package com.fh.service;
 
 import com.fh.model.Account;
-import com.fh.util.ServerResponse;
+import com.fh.common.ServerResponse;
 
 public interface AccountService {
 
