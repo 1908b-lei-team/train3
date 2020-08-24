@@ -8,7 +8,6 @@ public class ServerResponse {
 
     private Object data;
 
-
     /**
      * 成功返回信息
      *

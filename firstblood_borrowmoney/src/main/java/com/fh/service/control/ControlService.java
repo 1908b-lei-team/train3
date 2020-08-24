@@ -10,4 +10,6 @@ public interface ControlService{
     List<Control> queryList();
 
     ServerResponse addLoan(Control control);
+
+    void updateInsName(List<Control> list);
 }
