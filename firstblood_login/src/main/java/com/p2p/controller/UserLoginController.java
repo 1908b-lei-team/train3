@@ -1,10 +1,9 @@
 package com.p2p.controller;
 
+import com.fh.common.ServerResponse;
 import com.p2p.model.User;
 import com.p2p.service.UserLoginService;
-import com.p2p.util.ServerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,8 +17,8 @@ public class UserLoginController {
     //用户注册
     @RequestMapping("register")
     public ServerResponse register(User user){
-            userLoginService.register(user);
-            return ServerResponse.success();
+        userLoginService.register(user);
+        return ServerResponse.successMethod();
     }
 
     //查询用户手机号
@@ -27,6 +26,12 @@ public class UserLoginController {
     public ServerResponse queryByUserPhone(String userPhone){
         return userLoginService.queryByUserPhone(userPhone);
     }
+    //查询用户名称
+    @RequestMapping("queryByUserName")
+    public ServerResponse queryByUserName(String userName){
+        return userLoginService.queryByUserName(userName);
+    }
+
     //用户登录
     @RequestMapping("userLogin")
     public ServerResponse userLogin(User user){

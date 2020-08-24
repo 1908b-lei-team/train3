@@ -16,4 +16,6 @@ public interface UserLoginMapper extends BaseMapper<User> {
     void updateLoginstatus(User queryByUserPhone);
 
     void updateLogincount(User queryByUserPhone);
+
+    User queryByUserName(String userName);
 }

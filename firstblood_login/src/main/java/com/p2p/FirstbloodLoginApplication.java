@@ -12,4 +12,5 @@ public class FirstbloodLoginApplication {
         SpringApplication.run(FirstbloodLoginApplication.class, args);
     }
     //sadasdasd
+
 }
