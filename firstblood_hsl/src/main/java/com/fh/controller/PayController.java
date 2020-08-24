@@ -31,8 +31,8 @@ public class PayController {
 
 
     @RequestMapping("onSubmit")
-    public  ServerResponse  onSubmit(Pay pay, Integer id){
-        return  payService.onSubmit(pay,id);
+    public  ServerResponse  onSubmit(Pay pay){
+        return  payService.onSubmit(pay);
     }
 
 }

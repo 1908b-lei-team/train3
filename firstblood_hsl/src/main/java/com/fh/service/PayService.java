@@ -12,5 +12,5 @@ public interface PayService {
 
     ServerResponse querygeneralassets(Integer id);
 
-    ServerResponse onSubmit(Pay pay,Integer id);
+    ServerResponse onSubmit(Pay pay);
 }

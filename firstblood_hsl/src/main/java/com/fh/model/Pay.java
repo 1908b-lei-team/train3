@@ -46,10 +46,10 @@ public class Pay {
 
 
     @TableField("borrow_money")
-    private Double borrowMoney;   //借款金额
+    private BigDecimal borrowMoney;   //借款金额
 
     @TableField("loan_amount")
-    private Double loanamount;  //出借金额
+    private BigDecimal loanamount;  //出借金额
 
 
     @TableField(exist = false)
@@ -75,9 +75,6 @@ public class Pay {
     @TableField("join_the")
     private Integer joinThe;//加入人次
 
-    public Double getLoanamount() {
-        return loanamount;
-    }
 
 /*    public Integer getSignid() {
         return signid;
@@ -87,7 +84,19 @@ public class Pay {
         this.signid = signid;
     }*/
 
-    public void setLoanamount(Double loanamount) {
+    public BigDecimal getBorrowMoney() {
+        return borrowMoney;
+    }
+
+    public void setBorrowMoney(BigDecimal borrowMoney) {
+        this.borrowMoney = borrowMoney;
+    }
+
+    public BigDecimal getLoanamount() {
+        return loanamount;
+    }
+
+    public void setLoanamount(BigDecimal loanamount) {
         this.loanamount = loanamount;
     }
 
@@ -171,13 +180,7 @@ public class Pay {
         this.dealpassword = dealpassword;
     }
 
-    public Double getBorrowMoney() {
-        return borrowMoney;
-    }
 
-    public void setBorrowMoney(Double borrowMoney) {
-        this.borrowMoney = borrowMoney;
-    }
 
     public Double getAnnualRate() {
         return annualRate;

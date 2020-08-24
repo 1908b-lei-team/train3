@@ -33,14 +33,18 @@ public class PayServiceImpl implements PayService {
     }
 
     @Override
-    public ServerResponse onSubmit(Pay pay,Integer id) {
-        Pay pay1 = payMapper.selectById(id);
-        if(!pay1.getDealpassword().equals(pay.getDealpassword())){
+    public ServerResponse onSubmit(Pay pay) {
+        Pay pay1 = payMapper.selectById(pay.getId());
+        if(!pay1.getDealpassword().equals(pay.getDealpassword()) ){
             return  ServerResponse.error("支付密码不正确");
         }
-        if (500000<pay.getLoanamount()){
+
+        //(BigDecimal怎么比较大小  )
+        if (pay.getLoanamount().equals(500000) && pay1.getGeneralassets().equals(pay.getLoanamount())){
             return  ServerResponse.error("超出出借金额");
         }else{
+
+            //应该吧借出余额存在对应的用户上
             payMapper.addLoanamount(pay.getLoanamount());
         }
 
