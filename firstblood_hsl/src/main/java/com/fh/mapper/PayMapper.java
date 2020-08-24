@@ -9,6 +9,6 @@ import java.math.BigDecimal;
 @Mapper
 public interface PayMapper extends BaseMapper<Pay> {
 
-    void addLoanamount(BigDecimal loanamount);
+    void updateLoanamount(Pay pay1);
 
 }

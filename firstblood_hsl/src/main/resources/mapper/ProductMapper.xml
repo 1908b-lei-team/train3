@@ -8,7 +8,7 @@
 
 <insert id="addLoanamount" parameterType="com.fh.model.Pay">
 
-    insert into t_pay (loan_amount) values (#{loan_amount})
+    update  t_pay set  loan_amount =#{loan_amount} where id=#{id};
 
 </insert>
 
