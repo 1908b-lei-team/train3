@@ -78,11 +78,13 @@ public class CheckInfoVo {
     @TableField("fundraising_progress")
     private String  fundraisingProgress;
 
-    private String userName; //用户姓名
-    private String bankPhone; //银行预留手机号
 
 
     private int userid;
+
+    private String useridentity;//用户身份
+
+    private String username; //用户名
 
     private String userphone;//手机号
 
@@ -100,15 +102,15 @@ public class CheckInfoVo {
 
     private Date logintime;//   login_time` datetime DEFAULT NULL COMMENT '最后登录时间',
 
-    private String userworktime;//`` varchar(255) DEFAULT NULL COMMENT '工作时间',
+    private String userworktime;//``工作时间 varchar(255) DEFAULT NULL COMMENT '工作时间',
 
-    private String userhouse;//` varchar(255) DEFAULT NULL COMMENT '房产',
+    private String userhouse;//` 房产varchar(255) DEFAULT NULL COMMENT '房产',
 
-    private String userincome;//` varchar(255) DEFAULT NULL COMMENT  '年收入',
+    private String userincome;//年收入` varchar(255) DEFAULT NULL COMMENT  '年收入',
 
-    private String userproperty;//` varchar(255) DEFAULT NULL COMMENT  '总资产',
+    private String userproperty;//总资产 varchar(255) DEFAULT NULL COMMENT  '总资产',
 
-    private String uservehicle;//` varchar(255) DEFAULT NULL COMMENT  '车产',
+    private String uservehicle;//` 车产 varchar(255) DEFAULT NULL COMMENT  '车产',
 
     private int logincount;//` int(11) DEFAULT NULL COMMENT '登录次数',
 
