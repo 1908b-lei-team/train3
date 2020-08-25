@@ -9,6 +9,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.arcsoft.face.toolkit.ImageFactory;
 import com.arcsoft.face.toolkit.ImageInfo;
 import com.fh.common.ServerResponse;
+import com.fh.common.UserAnnotation;
 import com.fh.domain.User;
 import com.fh.dto.FaceSearchResDto;
 import com.fh.dto.ProcessInfo;
@@ -61,7 +62,7 @@ public class FaceController {
      */
     @RequestMapping(value = "/faceAdd", method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse faceAdd(@RequestParam("file") String file, @RequestParam("groupId") Integer groupId, @RequestParam("name") String name) {
+    public ServerResponse faceAdd(@UserAnnotation User user, @RequestParam("file") String file, @RequestParam("groupId") Integer groupId, @RequestParam("name") String name) {
         if("".equals(name)){
             //return Results.newFailedResult("姓名为空");
             return ServerResponse.errorMethod("姓名为空");
