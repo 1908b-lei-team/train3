@@ -20,4 +20,6 @@ public interface ControlService {
     ServerResponse queryListPage(ControParam controParam);
 
     ServerResponse queryCheckInfo(Integer id);
+
+    void updateCheckStatu(String status, Integer userId);
 }

@@ -50,16 +50,29 @@ public class ControlController {
      */
     @RequestMapping("insertControl")
     public ServerResponse insertControl(Control control){
-
         controlService.insertControl(control);
         return  ServerResponse.successMethod();
     }
+
+    @RequestMapping("updateCheckStatu")
+    public ServerResponse updateCheckStatu(String status,Integer userId){
+        controlService.updateCheckStatu(status,userId);
+        return  ServerResponse.successMethod();
+    }
+
 
     @RequestMapping("updateControl")
     public ServerResponse updateControl(Control control){
         controlService.updateControl(control);
         return  ServerResponse.successMethod();
     }
+
+
+    /*@RequestMapping("updateControl")
+    public ServerResponse updateControl(Control control){
+        controlService.updateControl(control);
+        return  ServerResponse.successMethod();
+    }*/
 
     @RequestMapping("deleteControl")
     public ServerResponse deleteControl(Integer id){
