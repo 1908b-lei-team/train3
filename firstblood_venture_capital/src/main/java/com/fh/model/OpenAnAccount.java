@@ -1,32 +1,82 @@
 package com.fh.model;
 
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
+/**
+ * 开户信息
+ */
 @TableName("t_open_an_account")
 public class OpenAnAccount {
 
+    @TableId(type = IdType.INPUT)
     private Integer id;
+    @TableField("user_id")
     private Integer userId; //用户id
+    @TableField("user_name")
     private String userName; //用户姓名
+    @TableField("id_number")
     private String idNumber; //身份证
+    @TableField("credit_card_numbers")
     private String creditCardNumbers; //银行卡号
+    @TableField("account_type")
     private String accountType; //账户类型
+    @TableField("bank_phone")
     private String bankPhone; //银行预留手机号
+    @TableField("confirm_password")
     private String confirmPassword; //确认密码
+    @TableField("bank")
     private String bank; //银行类型
+    @TableField("virtual_bank_id")
     private String virtualBankId; //虚拟卡号
+    @TableField("new_time")
     private String newTime; //开户时间
+    @TableField("user_balance")
     private Double userBalance; //可用余额
+    @TableField("general_assets")
     private Double generalAssets; //总金额
+    @TableField("user_frozen_capital")
     private Double userFrozenCapital; //冻结金额
+    @TableField("the_collecting_amount")
     private Double theCollectingAmount; //代收金额
+    @TableField("generation_also_amount")
     private Double generationAlsoAmount; //代还金额
+    @TableField("total_revenue")
     private Double totalRevenue; //总收益
+    @TableField("lately_login_time")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date latelyLoginTime; //最近登录时间
-    private Integer loginCount; //最近登录时间
+    @TableField("login_count")
+    private Integer loginCount; //登录次数
+    @TableField("account_opening_status")
+    private  Integer accountOpeningStatus;//开户状态
+    @TableField("lockout_state")
+    private  Integer lockoutStatus;//锁定状态
 
+
+    public Integer getAccountOpeningStatus() {
+        return accountOpeningStatus;
+    }
+
+    public void setAccountOpeningStatus(Integer accountOpeningStatus) {
+        this.accountOpeningStatus = accountOpeningStatus;
+    }
+
+    public Integer getLockoutStatus() {
+        return lockoutStatus;
+    }
+
+    public void setLockoutStatus(Integer lockoutStatus) {
+        this.lockoutStatus = lockoutStatus;
+    }
 
     public Integer getId() {
         return id;

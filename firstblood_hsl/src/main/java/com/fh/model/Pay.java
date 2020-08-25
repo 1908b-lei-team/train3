@@ -43,17 +43,14 @@ public class Pay {
     @TableField("general_assets")
     private BigDecimal generalassets;//账户余额
 
-
     @TableField("deal_password")
     private  String  dealpassword;//交易密码
-
 
     @TableField("borrow_money")
     private BigDecimal borrowMoney;   //借款金额
 
     @TableField("loan_amount")
     private BigDecimal loanamount;  //出借金额
-
 
     @TableField(exist = false)
     private  Double rateschedule;//满标进度
@@ -64,7 +61,6 @@ public class Pay {
     @TableField("deadline")
     private String deadline;//期限
 
-
     @TableField("start_Time")
     private Date startTime;//放款时间
 
@@ -73,7 +69,6 @@ public class Pay {
 
     @TableField("loan_time")
     private Date loanTime;//loan_time 发起时间
-
 
     @TableField("join_the")
     private Integer joinThe;//加入人次

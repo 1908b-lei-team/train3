@@ -31,7 +31,16 @@ public class Account {
     private Date newTime;
     @TableField("virtual_bank_id")
     private String virtualBankId;
+    @TableField("user_balance")
+    private Double userBalance;
 
+    public Double getUserBalance() {
+        return userBalance;
+    }
+
+    public void setUserBalance(Double userBalance) {
+        this.userBalance = userBalance;
+    }
 
     public String getVirtualBankId() {
         return virtualBankId;

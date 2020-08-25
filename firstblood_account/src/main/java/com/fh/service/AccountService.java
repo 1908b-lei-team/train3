@@ -1,7 +1,7 @@
 package com.fh.service;
 
 import com.fh.model.Account;
-import com.fh.util.ServerResponse;
+import com.fh.common.ServerResponse;
 
 public interface AccountService {
 
@@ -14,4 +14,6 @@ public interface AccountService {
     ServerResponse checkCreditCardNumbers(String checkCreditCardNumbers);
 
     ServerResponse checkBankPhone(String bankPhone);
+
+    ServerResponse queryInfo2();
 }

@@ -7,7 +7,7 @@ import com.fh.mapper.UserMapper;
 import com.fh.model.Account;
 import com.fh.model.User;
 import com.fh.service.UserService;
-import com.fh.util.ServerResponse;
+import com.fh.common.ServerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
