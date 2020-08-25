@@ -100,6 +100,7 @@ public class UserLoginServiceImpl implements UserLoginService {
             String encode = URLEncoder.encode(jsonString, "utf-8");
             token = JwtUtil.sign(encode);
             RedisUtil.set(token,token,30*60*1000);
+
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
