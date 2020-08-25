@@ -15,7 +15,7 @@ public class appConfig implements WebMvcConfigurer {
     private UserResolver userResolver;
 
     @Bean
-    public UserResolver memberResolver(){
+    public UserResolver userResolver(){
         return new UserResolver();
     }
     @Override
