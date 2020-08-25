@@ -3,6 +3,7 @@ package com.fh.controller;
 import com.fh.model.Control;
 import com.fh.service.control.ControlService;
 import com.fh.util.ServerResponse;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,6 +35,11 @@ public class ControlController {
 
     public void updateInsName(List<Control> list){
         controlService.updateInsName(list);
+    }
+
+    @RequestMapping("withdraw")
+    public ServerResponse withdraw(Integer id, @Param("withdrawMoney") Double withdrawMoney, @Param("password")String password){
+        return  controlService.withdraw(id,withdrawMoney,password);
     }
 
 
