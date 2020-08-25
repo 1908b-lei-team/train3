@@ -3,7 +3,6 @@ package com.fh.service.control;
 import com.fh.mapper.ControlMapper;
 import com.fh.model.Control;
 import com.fh.util.ServerResponse;
-import org.springframework.jdbc.object.UpdatableSqlQuery;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -36,6 +35,7 @@ public  class ControlServiceImpl implements ControlService {
         number=temp+random;
         control.setNumber(number);
         //FIRST_TRIAL 初审
+        control.setUserId(5);
         control.setStatus("初审中");
         control.setRateSchedule(0.0);
         control.setAnnualRate(10.0);
@@ -93,5 +93,10 @@ public  class ControlServiceImpl implements ControlService {
             }
             controlMapper.updateById(control);
         }
+    }
+
+    @Override
+    public ServerResponse withdraw(Integer id, Double withdrawMoney, String password) {
+        return null;
     }
 }

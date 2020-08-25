@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fh.mapper.PayMapper">
+
+
+<update id="addLoanamount" parameterType="com.fh.model.Pay">
+
+    update  t_pay set  loan_amount =#{loan_amount} where id=#{id};
+
+</update>
+
+    <insert id="insertRelevance" parameterType="com.fh.model.Relevance">
+        insert into t_p2p_relevance (id,userId,signId,freezeMoney) values (#{id},#{userId},#{signId},#{freezeMoney})
+    </insert>
+
+
+</mapper>
+

@@ -5,12 +5,4 @@
 
 <mapper namespace="com.fh.mapper.ControlMapper">
 
-    <select id="queryList" resultType="Control">
-        select * from t_control c left join t_pay p on c.userId=p.id
-    </select>
-
-    <update id="updateRateSchedule" parameterType="Control">
-        update
-    </update>
-
 </mapper>
