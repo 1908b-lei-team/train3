@@ -50,4 +50,11 @@ public class PayController {
     public  ServerResponse  gotop(Pay pay){
     return  payService.gotop(pay);
     }*/
+
+
+   //充值提交
+    @RequestMapping("commith")
+    public  ServerResponse  commith(Pay pay){
+       return payService.commith(pay);
+   }
 }

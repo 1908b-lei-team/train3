@@ -81,6 +81,43 @@ public class PayServiceImpl implements PayService {
         return ServerResponse.success(pay.getBalance());
     }
 
+    //充值提交
+    @Override
+    public ServerResponse commith(Pay pay) {
+
+        //user id
+        QueryWrapper<Pay> queryWrapper = new QueryWrapper<>();
+        //12是用户id   从登录拦截的session中获取
+        queryWrapper.eq("user_id",12);
+        Pay pay1 = payMapper.selectOne(queryWrapper);
+
+        if(pay.getPaymoney() == null){
+            return  ServerResponse.error("充值金额为空");
+        }
+        if(!pay1.getDealpassword().equals(pay.getDealpassword()) ){
+            return  ServerResponse.error("支付密码不正确");
+        }
+
+
+
+        BigDecimal bigDecimal = new BigDecimal(10);
+        int i = bigDecimal.compareTo(pay.getPaymoney());  //i=-1小于  0 等于  1大于
+        if(i==1){
+            return ServerResponse.error("最少充值10元");
+        }else {
+
+            //总余额等于 余额+充值的
+        BigDecimal zong = pay1.getGeneralassets().add(pay.getPaymoney());
+        BigDecimal zongKeyong = pay1.getBalance().add(pay.getPaymoney());
+        pay1.setGeneralassets(zong);
+        pay1.setBalance(zongKeyong);
+        payMapper.updateById(pay1);
+        }
+
+
+        return ServerResponse.success(pay1.getGeneralassets());
+    }
+
     //去充值
 /*    @Override
     public ServerResponse gotop(Pay pay) {
@@ -97,6 +134,8 @@ public class PayServiceImpl implements PayService {
         Pay pay1 = payMapper.selectOne(queryWrapper);
         return null;
     }*/
+
+
 
 
 }

@@ -16,5 +16,7 @@ public interface PayService {
 
     ServerResponse querybalance(Integer id);
 
-   /* ServerResponse gotop(Pay pay);*/
+    ServerResponse commith(Pay pay);
+
+    /* ServerResponse gotop(Pay pay);*/
 }
