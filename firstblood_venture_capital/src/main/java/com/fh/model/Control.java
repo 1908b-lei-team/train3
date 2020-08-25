@@ -76,7 +76,19 @@ public class Control {
     @TableField("loan_time")
     private Date loanTime;//loan_time
     @TableField("fundraising_progress")
-    private String  fundraisingProgress;
+    private String  fundraisingProgress; //筹款君度
+
+    @TableField("review_time")
+    private String  reviewTime; //审批时间
+
+
+    public String getReviewTime() {
+        return reviewTime;
+    }
+
+    public void setReviewTime(String reviewTime) {
+        this.reviewTime = reviewTime;
+    }
 
     public String getFundraisingProgress() {
         return fundraisingProgress;

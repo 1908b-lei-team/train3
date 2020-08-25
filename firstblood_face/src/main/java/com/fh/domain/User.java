@@ -1,18 +1,10 @@
-package com.fh.model;
+package com.fh.domain;
 
-
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.util.Date;
 
-@TableName("t_user")
 public class User {
 
-    @TableId(type = IdType.INPUT)
-    @TableField("id")
     private int id;
 
     private String userphone;//手机号
@@ -45,17 +37,17 @@ public class User {
 
     private String loginstatus;//` varchar(255) DEFAULT NULL COMMENT '是否锁定',
 
-    private String useridentity;//用户身份
+    private String username;//` varchar(255) DEFAULT NULL COMMENT '用户名',
 
-    private String username; //用户名
+    private String idnumber;//` varchar(255) DEFAULT NULL COMMENT '身份证号码',
 
-    public String getUseridentity() {
-        return useridentity;
-    }
+    private String userstatus;//` varchar(255) DEFAULT NULL COMMENT '是否绑定',
 
-    public void setUseridentity(String useridentity) {
-        this.useridentity = useridentity;
-    }
+    private String userrole;//` varchar(255) DEFAULT NULL COMMENT '',
+
+    private String pwdsaly;//` varchar(255) DEFAULT NULL COMMENT '',
+
+    private Date updatetime;//` varchar(255) DEFAULT NULL COMMENT '修改时间',
 
     public String getUsername() {
         return username;
@@ -63,6 +55,46 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getIdnumber() {
+        return idnumber;
+    }
+
+    public void setIdnumber(String idnumber) {
+        this.idnumber = idnumber;
+    }
+
+    public String getUserstatus() {
+        return userstatus;
+    }
+
+    public void setUserstatus(String userstatus) {
+        this.userstatus = userstatus;
+    }
+
+    public String getUserrole() {
+        return userrole;
+    }
+
+    public void setUserrole(String userrole) {
+        this.userrole = userrole;
+    }
+
+    public String getPwdsaly() {
+        return pwdsaly;
+    }
+
+    public void setPwdsaly(String pwdsaly) {
+        this.pwdsaly = pwdsaly;
+    }
+
+    public Date getUpdatetime() {
+        return updatetime;
+    }
+
+    public void setUpdatetime(Date updatetime) {
+        this.updatetime = updatetime;
     }
 
     public int getId() {
