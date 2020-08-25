@@ -1,16 +1,17 @@
 package com.fh.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.fh.common.SystemConstant;
 import com.fh.mapper.AccountMapper;
 import com.fh.model.Account;
-import com.fh.model.Attestation;
 import com.fh.service.AccountService;
 import com.fh.util.RandomCreditCardNumberGenerator;
 import com.fh.common.ServerResponse;
 import com.p2p.model.User;
+import org.json.HTTP;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -70,27 +71,33 @@ public class AccountServiceImpl implements AccountService {
 
     // 开户
     @Override
-    public ServerResponse addAccount(Account account) {
-
-        try {
+    public ServerResponse addAccount(Account account,HttpServletRequest request) {
+        String header = request.getHeader(SystemConstant.SESSION_KEY);
+        User user = JSONObject.parseObject(header, User.class);
+        if (user != null){
             account.setNewTime(new Date());
-            account.setUserId(5);
+            account.setUserId(user.getId());
             String bank_account = RandomCreditCardNumberGenerator.get_Bank_account();
             account.setVirtualBankId(bank_account);
             accountMapper.insert(account);
             return ServerResponse.successMethod(1000);
-        }catch (Exception e){
-            return ServerResponse.errorMethod(2000);
         }
+            return ServerResponse.errorMethod(2000);
     }
 
 
     // 查询用户信息
     @Override
-    public ServerResponse queryInfo2() {
-        QueryWrapper<Account> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("user_id",5);
-        Account account = accountMapper.selectOne(queryWrapper);
-        return ServerResponse.successMethod(account);
+    public ServerResponse queryInfo2(HttpServletRequest request) {
+        String header = request.getHeader(SystemConstant.SESSION_KEY);
+        User user = JSONObject.parseObject(header, User.class);
+        if (user != null){
+            QueryWrapper<Account> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("user_id",user.getId());
+            Account account = accountMapper.selectOne(queryWrapper);
+            return ServerResponse.successMethod(account);
+        }
+        return ServerResponse.errorMethod(2000);
     }
+
 }

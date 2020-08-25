@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RequestMapping("account")
 @RestController
 //@CrossOrigin
@@ -41,16 +43,16 @@ public class AccountController {
 
     // 开户
     @RequestMapping("addAccount")
-    public ServerResponse addAccount(Account account){
-        return accountService.addAccount(account);
+    public ServerResponse addAccount(Account account, HttpServletRequest request){
+        return accountService.addAccount(account,request);
     }
 
 
 
     // 查询用户信息
     @RequestMapping("queryInfo2")
-    public ServerResponse queryInfo2(){
-     return accountService.queryInfo2();
+    public ServerResponse queryInfo2(HttpServletRequest request){
+     return accountService.queryInfo2(request);
     }
 
     @RequestMapping("ocr")
