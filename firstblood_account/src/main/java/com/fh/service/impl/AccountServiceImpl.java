@@ -7,9 +7,12 @@ import com.fh.model.Attestation;
 import com.fh.service.AccountService;
 import com.fh.util.RandomCreditCardNumberGenerator;
 import com.fh.common.ServerResponse;
+import com.p2p.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 @Service
@@ -68,6 +71,7 @@ public class AccountServiceImpl implements AccountService {
     // 开户
     @Override
     public ServerResponse addAccount(Account account) {
+
         try {
             account.setNewTime(new Date());
             account.setUserId(5);
@@ -76,7 +80,7 @@ public class AccountServiceImpl implements AccountService {
             accountMapper.insert(account);
             return ServerResponse.successMethod(1000);
         }catch (Exception e){
-            return ServerResponse.errorMethod(1000);
+            return ServerResponse.errorMethod(2000);
         }
     }
 
@@ -89,5 +93,4 @@ public class AccountServiceImpl implements AccountService {
         Account account = accountMapper.selectOne(queryWrapper);
         return ServerResponse.successMethod(account);
     }
-
 }
