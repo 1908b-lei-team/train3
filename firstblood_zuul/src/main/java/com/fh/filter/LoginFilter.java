@@ -43,10 +43,10 @@ public class LoginFilter extends ZuulFilter {
         String uri=request.getRequestURI();
         for (String url : urls) {
             if(uri.contains(url)){
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -66,13 +66,10 @@ public class LoginFilter extends ZuulFilter {
             if (verify){//验证token
                 String user = JwtUtil.getUser(token);
                 String decode = URLDecoder.decode(user, "utf-8");
-                User member = JSONObject.parseObject(decode, User.class);
-                //
-
-
-                request.getSession().setAttribute(SystemConstant.SESSION_KEY,member);
+                ctx.addZuulRequestHeader(SystemConstant.SESSION_KEY,decode);
+                ctx.addZuulRequestHeader(SystemConstant.TOKEN_KEY,token);
             }else {
-                throw new LoginException("没有登录",10011,"没有登录");
+                throw new LoginException("没有登录",1002,"没有登录");
 
             }
         } catch (UnsupportedEncodingException e) {
