@@ -4,7 +4,6 @@ import com.fh.model.Control;
 import com.fh.util.ServerResponse;
 
 import java.util.List;
-
 public interface ControlService{
 
     List<Control> queryList();
@@ -12,4 +11,6 @@ public interface ControlService{
     ServerResponse addLoan(Control control);
 
     void updateInsName(List<Control> list);
+
+    ServerResponse withdraw(Integer id, Double withdrawMoney, String password);
 }

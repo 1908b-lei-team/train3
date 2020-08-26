@@ -1,7 +1,9 @@
 package com.p2p.service;
 
+import com.netflix.zuul.context.RequestContext;
 import com.alibaba.fastjson.JSONObject;
 import com.fh.common.ServerResponse;
+import com.fh.common.SystemConstant;
 import com.p2p.mapper.UserLoginMapper;
 import com.p2p.model.User;
 import com.p2p.util.JwtUtil;
@@ -10,6 +12,8 @@ import com.p2p.util.RedisUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Date;
@@ -93,12 +97,14 @@ public class UserLoginServiceImpl implements UserLoginService {
             userLoginMapper.updateLogincount(queryByUserPhone);
             return ServerResponse.errorMethod("密码不正确，目前密码错误次数"+queryByUserPhone.getLogincount()+"如果超过三次将被锁定一天");
         }
-
+        RequestContext ctx = RequestContext.getCurrentContext();
         String token = null;
         try {
             String jsonString = JSONObject.toJSONString(queryByUserPhone);
             String encode = URLEncoder.encode(jsonString, "utf-8");
             token = JwtUtil.sign(encode);
+            ctx.addZuulRequestHeader(SystemConstant.SESSION_KEY,encode);
+            ctx.addZuulRequestHeader(SystemConstant.TOKEN_KEY,token);
             RedisUtil.set(token,token,30*60*1000);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

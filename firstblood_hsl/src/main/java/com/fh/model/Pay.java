@@ -12,9 +12,15 @@ import java.util.Date;
 @TableName("t_pay")
 public class Pay {
     @TableId(type = IdType.INPUT)
-    private Integer id;
+    private Integer id;   //项目id
     @TableField("number")
     private String number;    //编号
+    @TableField("user_id")
+    private Integer userId;//用户id
+
+
+/*    @TableField("sign_id")
+    private Integer signid;   //标id*/
 
     @TableField("project_name")
     private String projectName;//项目名称
@@ -41,7 +47,10 @@ public class Pay {
     private  String  dealpassword;//交易密码
 
     @TableField("borrow_money")
-    private Double borrowMoney;   //借款金额
+    private BigDecimal borrowMoney;   //借款金额
+
+    @TableField("loan_amount")
+    private BigDecimal loanamount;  //出借金额
 
     @TableField(exist = false)
     private  Double rateschedule;//满标进度
@@ -63,6 +72,39 @@ public class Pay {
 
     @TableField("join_the")
     private Integer joinThe;//加入人次
+
+
+/*    public Integer getSignid() {
+        return signid;
+    }
+
+    public void setSignid(Integer signid) {
+        this.signid = signid;
+    }*/
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public BigDecimal getBorrowMoney() {
+        return borrowMoney;
+    }
+
+    public void setBorrowMoney(BigDecimal borrowMoney) {
+        this.borrowMoney = borrowMoney;
+    }
+
+    public BigDecimal getLoanamount() {
+        return loanamount;
+    }
+
+    public void setLoanamount(BigDecimal loanamount) {
+        this.loanamount = loanamount;
+    }
 
     public BigDecimal getGeneralassets() {
         return generalassets;
@@ -144,13 +186,7 @@ public class Pay {
         this.dealpassword = dealpassword;
     }
 
-    public Double getBorrowMoney() {
-        return borrowMoney;
-    }
 
-    public void setBorrowMoney(Double borrowMoney) {
-        this.borrowMoney = borrowMoney;
-    }
 
     public Double getAnnualRate() {
         return annualRate;

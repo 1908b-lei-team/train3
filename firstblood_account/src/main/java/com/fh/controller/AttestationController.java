@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping("attestation")
 //@CrossOrigin
@@ -18,8 +20,8 @@ public class AttestationController {
 
     //实名
     @RequestMapping("realNameAuthentication")
-    public ServerResponse realNameAuthentication(Attestation attestation){
-        return attestationService.realNameAuthentication(attestation);
+    public ServerResponse realNameAuthentication(Attestation attestation, HttpServletRequest request){
+        return attestationService.realNameAuthentication(attestation,request);
     }
 
     //验证 身份证
@@ -29,8 +31,8 @@ public class AttestationController {
     }
 
     @RequestMapping("queryInfo")
-    public ServerResponse queryInfo(){
-        return attestationService.queryInfo();
+    public ServerResponse queryInfo(HttpServletRequest request){
+        return attestationService.queryInfo(request);
     }
 
 }
