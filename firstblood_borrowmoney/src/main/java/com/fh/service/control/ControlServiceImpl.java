@@ -1,11 +1,15 @@
 package com.fh.service.control;
 
+import com.alibaba.fastjson.JSONObject;
+import com.fh.common.SystemConstant;
 import com.fh.mapper.ControlMapper;
 import com.fh.model.Control;
 import com.fh.util.ServerResponse;
+import com.p2p.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -13,7 +17,7 @@ import java.util.List;
 @Service
 public  class ControlServiceImpl implements ControlService {
 
-    @Resource
+    @Autowired
     private ControlMapper controlMapper;
 
     @Override
@@ -22,26 +26,28 @@ public  class ControlServiceImpl implements ControlService {
     }
 
     @Override
-    public ServerResponse addLoan(Control control) {
-        if (control.getBorrowMoney()>=50000.0){
-           return ServerResponse.error("借款金额最高为50000");
+    public ServerResponse addLoan(Control control, HttpServletRequest request) {
+        String header = request.getHeader(SystemConstant.SESSION_KEY);
+        User user = JSONObject.parseObject(header, User.class);
+        if (user != null) {
+            if (control.getBorrowMoney()>=50000.0){
+                return ServerResponse.error("借款金额最高为50000");
+            }
+            String number="";
+            SimpleDateFormat sf = new SimpleDateFormat("yyMdd");
+            String temp = sf.format(new Date());
+            int random=(int) ((Math.random()+1)*1000);
+            number=temp+random;
+            control.setNumber(number);
+            control.setUserId(user.getId());
+            control.setStatus("初审中");
+            control.setRateSchedule(0.0);
+            control.setAnnualRate(10.0);
+            control.setLoanTime(new Date());
+            controlMapper.insert(control);
+            return ServerResponse.success();
         }
-        String number="";
-        //获取当前时间戳
-        SimpleDateFormat sf = new SimpleDateFormat("yyMdd");
-        String temp = sf.format(new Date());
-        //获取4位随机数
-        int random=(int) ((Math.random()+1)*1000);
-        number=temp+random;
-        control.setNumber(number);
-        //FIRST_TRIAL 初审
-        control.setUserId(5);
-        control.setStatus("初审中");
-        control.setRateSchedule(0.0);
-        control.setAnnualRate(10.0);
-        control.setLoanTime(new Date());
-        controlMapper.insert(control);
-        return ServerResponse.success();
+        return ServerResponse.error();
     }
     @Override
     public void updateInsName(List<Control> list) {

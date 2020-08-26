@@ -22,6 +22,4 @@ public class BillController {
         return ServerResponse.success(list);
     }
 
-
-
 }

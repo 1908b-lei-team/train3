@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,8 +30,8 @@ public class ControlController {
         return ServerResponse.success(map);
     }
     @RequestMapping("addLoan")
-    public ServerResponse addLoan(Control control){
-        return  controlService.addLoan(control);
+    public ServerResponse addLoan(Control control,HttpServletRequest request){
+        return  controlService.addLoan(control,request);
     }
 
     public void updateInsName(List<Control> list){

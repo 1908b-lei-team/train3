@@ -21,7 +21,7 @@ import java.net.URLDecoder;
 @Component
 public class LoginFilter extends ZuulFilter {
 
-    @Value("${check.urls}")
+    @Value("${urls:urls}")
     private String[] urls;
 
     @Override
@@ -70,7 +70,6 @@ public class LoginFilter extends ZuulFilter {
                 ctx.addZuulRequestHeader(SystemConstant.TOKEN_KEY,token);
             }else {
                 throw new LoginException("没有登录",1002,"没有登录");
-
             }
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

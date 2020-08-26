@@ -39,7 +39,6 @@ public class UserLoginServiceImpl implements UserLoginService {
     //查询用户提交的手机号
     @Override
     public ServerResponse queryByUserPhone(String userPhone) {
-
         User user = userLoginMapper.queryByUserPhone(userPhone);
 
         //判断用户注册的手机号是否存在如果存在返回一个状态告诉用户手机号已注册

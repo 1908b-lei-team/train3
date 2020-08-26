@@ -22,7 +22,6 @@ public class ServerResponse {
         return new ServerResponse(1001,"操作失败",data);
     }
 
-
     public static ServerResponse login_error(){
         return new ServerResponse(1002,"登录失败");
     }
