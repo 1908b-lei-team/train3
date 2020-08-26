@@ -11,8 +11,6 @@ import java.util.List;
 
 @Configuration
 public class appConfig implements WebMvcConfigurer {
-    @Autowired
-    private UserResolver userResolver;
 
     @Bean
     public UserResolver userResolver(){
@@ -20,6 +18,6 @@ public class appConfig implements WebMvcConfigurer {
     }
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
-        resolvers.add(userResolver);
+        resolvers.add(userResolver());
     }
 }

@@ -62,7 +62,7 @@ public class FaceController {
      */
     @RequestMapping(value = "/faceAdd", method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse faceAdd(@UserAnnotation User user, @RequestParam("file") String file, @RequestParam("groupId") Integer groupId, @RequestParam("name") String name) {
+    public ServerResponse faceAdd( @RequestParam("file") String file, @RequestParam("groupId") Integer groupId, @RequestParam("name") String name) {
         if("".equals(name)){
             //return Results.newFailedResult("姓名为空");
             return ServerResponse.errorMethod("姓名为空");
@@ -120,8 +120,8 @@ public class FaceController {
      */
     @RequestMapping(value = "/faceSearch", method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse faceSearch(String file, Integer groupId) throws Exception {
-
+    public ServerResponse faceSearch(@UserAnnotation User userSession,String file, Integer groupId) throws Exception {
+        String username = userSession.getUsername();
         if (groupId == null) {
             return ServerResponse.errorMethod("groupId is null");
         }
