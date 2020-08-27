@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
-@Component
+//@Component
 public class LoginFilter extends ZuulFilter {
 
     @Value("${urls:urls}")

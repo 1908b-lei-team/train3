@@ -1,8 +1,8 @@
 package com.fh.controller;
 
+import com.fh.common.ServerResponse;
 import com.fh.model.Bill;
 import com.fh.service.bill.BillService;
-import com.fh.util.ServerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +19,7 @@ public class BillController {
     @RequestMapping("queryBillList")
     public ServerResponse queryBillList(){
       List<Bill> list = billService.queryBillList();
-        return ServerResponse.success(list);
+        return ServerResponse.successMethod(list);
     }
 
 }

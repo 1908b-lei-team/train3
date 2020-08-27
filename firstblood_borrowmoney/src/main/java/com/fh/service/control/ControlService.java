@@ -1,7 +1,7 @@
 package com.fh.service.control;
 
+import com.fh.common.ServerResponse;
 import com.fh.model.Control;
-import com.fh.util.ServerResponse;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

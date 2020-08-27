@@ -1,8 +1,8 @@
 package com.fh.controller;
 
+import com.fh.common.ServerResponse;
 import com.fh.model.Control;
 import com.fh.service.control.ControlService;
-import com.fh.util.ServerResponse;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +27,7 @@ public class ControlController {
         List<Control> list1 = controlService.queryList();
         Map<String,Object> map = new HashMap();
         map.put("list",list1);
-        return ServerResponse.success(map);
+        return ServerResponse.successMethod(map);
     }
     @RequestMapping("addLoan")
     public ServerResponse addLoan(Control control,HttpServletRequest request){

@@ -1,10 +1,10 @@
 package com.fh.service.control;
 
 import com.alibaba.fastjson.JSONObject;
+import com.fh.common.ServerResponse;
 import com.fh.common.SystemConstant;
 import com.fh.mapper.ControlMapper;
 import com.fh.model.Control;
-import com.fh.util.ServerResponse;
 import com.p2p.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +31,7 @@ public  class ControlServiceImpl implements ControlService {
         User user = JSONObject.parseObject(header, User.class);
         if (user != null) {
             if (control.getBorrowMoney()>=50000.0){
-                return ServerResponse.error("借款金额最高为50000");
+                return ServerResponse.errorMethod("借款金额最高为50000");
             }
             String number="";
             SimpleDateFormat sf = new SimpleDateFormat("yyMdd");
@@ -45,9 +45,9 @@ public  class ControlServiceImpl implements ControlService {
             control.setAnnualRate(10.0);
             control.setLoanTime(new Date());
             controlMapper.insert(control);
-            return ServerResponse.success();
+            return ServerResponse.successMethod();
         }
-        return ServerResponse.error();
+        return ServerResponse.errorMethod();
     }
     @Override
     public void updateInsName(List<Control> list) {
